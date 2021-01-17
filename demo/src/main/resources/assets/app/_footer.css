@@ -1,0 +1,17 @@
+.layout-footer {
+    font-size: 1rem;
+    padding: 2rem;
+    background-color: var(--surface-a);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.layout-footer a {
+    color: var(--text-color);
+    font-weight: 600;
+}
+.layout-footer .layout-footer-right a i {
+    color: var(--text-secondary-color);
+    font-size: 1.5rem;
+}
+
