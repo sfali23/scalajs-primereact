@@ -1,6 +1,7 @@
 package com.alphasystem.primereact.demo.components
 
 import com.alphasystem.primereact.demo.css.DemoStyles
+import com.alphasystem.primereact.icons.Icon
 import japgolly.scalajs.react.component.Scala.Unmounted
 import japgolly.scalajs.react.{ BackendScope, ScalaComponent }
 import japgolly.scalajs.react.vdom.all._
@@ -16,6 +17,11 @@ object AppTopBar extends ScalaCssReactImplicits {
 
     def render(props: Props, state: State): VdomElement = {
       div(cls := "layout-topbar")(
+        button(
+          cls := "p-link menu-button",
+          aria.haspopup := true,
+          aria.label := "Menu"
+        )(i(cls := Icon.Bars.toClassName)),
         div(
           DemoStyles.imageRow,
           a(cls := "logo", href := "/")(
