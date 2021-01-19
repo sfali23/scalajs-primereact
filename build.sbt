@@ -19,6 +19,7 @@ lazy val core = project
     skip in publishArtifact := true,
     Keys.`package` := file(""),
     scalaJSUseMainModuleInitializer := false,
+    webpackBundlingMode := BundlingMode.LibraryOnly(),
     Dependencies.Core,
     npmDependencies in Compile ++= Dependencies.CoreNpm,
     npmResolutions in Compile ++= (npmDependencies in Compile).value.toMap
@@ -31,17 +32,14 @@ lazy val demo = project
   .aggregate(core)
   .configure(commonProfile)
   .settings(
-    //name := "scalajs-primereact-demo",
     scalaJSUseMainModuleInitializer := true,
     scalaJSLinkerConfig ~= {
       _.withModuleKind(ModuleKind.CommonJSModule)
     },
     stIgnore ++= Settings.stIgnore,
-    //stUseScalaJsDom := false,
     jsEnv := new org.scalajs.jsenv.nodejs.NodeJSEnv(),
     scalaJSLinkerConfig ~= (_.withSourceMap(false)),
     webpackDevServerExtraArgs := Seq("--inline"),
-    //yarnExtraArgs := Seq("--silent"),
     npmDependencies in Compile ++= Dependencies.DemoNpm,
     npmDevDependencies in Compile ++= Dependencies.DevDependencies,
     npmResolutions in Compile ++= (npmDependencies in Compile).value.toMap,
@@ -60,8 +58,6 @@ lazy val commonProfile: Project => Project =
     ),
     scalaVersion := Settings.Version.Scala213Version,
     description := "scalajs-react facade for primereact",
-    webpackBundlingMode := BundlingMode.LibraryOnly(),
-    //useYarn := true,
     version in webpack := Settings.Version.Webpack,
     version in startWebpackDevServer := Settings.Version.WebpackDev,
     webpackCliVersion := Settings.Version.WebpackCli,

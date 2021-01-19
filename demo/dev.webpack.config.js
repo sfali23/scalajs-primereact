@@ -6,7 +6,7 @@ module.exports = generatedConfig;
 
 module.exports = {
     "entry": {
-        "demo-fastopt": ["/Users/sfali/development/personal/sfali/scalajs-primereact/demo/target/scala-2.13/scalajs-bundler/main/demo-fastopt.js"]
+        "demo-fastopt": ["./demo-fastopt.js"]
     },
     mode: "development",
     performance: {
