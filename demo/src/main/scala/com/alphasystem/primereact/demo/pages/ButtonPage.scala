@@ -8,7 +8,6 @@ import com.alphasystem.primereact.comoponent.button.{
   Severity
 }
 import japgolly.scalajs.react._
-import japgolly.scalajs.react.component.Scala.Unmounted
 import japgolly.scalajs.react.vdom.all._
 import scalacss.ScalaCssReactImplicits
 import com.alphasystem.primereact.demo.ButtonDemoCss
@@ -450,5 +449,5 @@ object ButtonPage extends ScalaCssReactImplicits {
     .renderBackend[Backend]
     .build
 
-  def apply(): Unmounted[Props, State, Backend] = component(Props())
+  def apply(): VdomElement = component(Props())
 }

@@ -1,7 +1,6 @@
 package com.alphasystem.primereact.demo.pages
 
 import japgolly.scalajs.react._
-import japgolly.scalajs.react.component.Scala.Unmounted
 import japgolly.scalajs.react.vdom.all._
 import scalacss.ScalaCssReactImplicits
 
@@ -26,5 +25,5 @@ object SetupPage extends ScalaCssReactImplicits {
     .renderBackend[Backend]
     .build
 
-  def apply(): Unmounted[Props, State, Backend] = component(Props())
+  def apply(): VdomElement = component(Props())
 }

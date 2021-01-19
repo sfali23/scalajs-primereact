@@ -2,7 +2,6 @@ package com.alphasystem.primereact.demo.components
 
 import com.alphasystem.primereact.demo.router.AppRouter.Page
 import japgolly.scalajs.react._
-import japgolly.scalajs.react.component.Scala.Unmounted
 import japgolly.scalajs.react.extra.router.{ Resolution, RouterCtl }
 import japgolly.scalajs.react.vdom.all._
 import scalacss.ScalaCssReactImplicits
@@ -35,5 +34,5 @@ object Layout extends ScalaCssReactImplicits {
   def apply(
     router: RouterCtl[Page],
     r: Resolution[Page]
-  ): Unmounted[Props, State, Backend] = component(Props(router, r))
+  ): VdomElement = component(Props(router, r))
 }

@@ -1,7 +1,6 @@
 package com.alphasystem.primereact.demo.components
 
 import com.alphasystem.primereact.demo.components.`app-menu`._
-import japgolly.scalajs.react.component.Scala.Unmounted
 import japgolly.scalajs.react.feature.ReactFragment
 import japgolly.scalajs.react.vdom.all._
 import japgolly.scalajs.react.{
@@ -130,5 +129,5 @@ object AppMenu extends ScalaCssReactImplicits {
     .renderBackend[Backend]
     .build
 
-  def apply(): Unmounted[Props, State, Backend] = component(Props())
+  def apply(): VdomElement = component(Props())
 }

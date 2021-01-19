@@ -2,7 +2,6 @@ package com.alphasystem.primereact.demo.components
 
 import com.alphasystem.primereact.demo.css.DemoStyles
 import com.alphasystem.primereact.icons.Icon
-import japgolly.scalajs.react.component.Scala.Unmounted
 import japgolly.scalajs.react.{ BackendScope, ScalaComponent }
 import japgolly.scalajs.react.vdom.all._
 import scalacss.ScalaCssReactImplicits
@@ -51,5 +50,5 @@ object AppTopBar extends ScalaCssReactImplicits {
     .renderBackend[Backend]
     .build
 
-  def apply(): Unmounted[Props, State, Backend] = component(Props())
+  def apply(): VdomElement = component(Props())
 }
