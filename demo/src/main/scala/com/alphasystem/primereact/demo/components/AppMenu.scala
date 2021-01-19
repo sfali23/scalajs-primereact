@@ -1,8 +1,6 @@
 package com.alphasystem.primereact.demo.components
 
 import com.alphasystem.primereact.demo.components.`app-menu`._
-import com.alphasystem.primereact.demo.css.DemoStyles
-import japgolly.scalajs.react.Ref.Simple
 import japgolly.scalajs.react.component.Scala.Unmounted
 import japgolly.scalajs.react.feature.ReactFragment
 import japgolly.scalajs.react.vdom.all._
@@ -10,17 +8,15 @@ import japgolly.scalajs.react.{
   BackendScope,
   CallbackTo,
   ReactEventFromHtml,
-  Ref,
   ScalaComponent
 }
-import org.scalajs.dom.html.Anchor
 import scalacss.ScalaCssReactImplicits
 
 object AppMenu extends ScalaCssReactImplicits {
 
   case class Props()
 
-  case class State(ref: Option[Simple[Anchor]] = None) {
+  case class State() {
 
     def doNothing(): State = {
       this
