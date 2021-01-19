@@ -9,7 +9,7 @@ package object `app-menu` {
       children = List(
         MenuItemModel(
           name = "Get Started",
-          to = Some("/#setup"),
+          to = Some("/#/setup"),
           meta = List("get started")
         ),
         MenuItemModel(
@@ -29,12 +29,12 @@ package object `app-menu` {
         MenuItemModel(
           name = "Button",
           meta = List("button"),
-          to = Some("/#button")
+          to = Some("/#/button")
         ),
         MenuItemModel(
           name = "SplitButton",
           meta = List("splitbutton"),
-          to = Some("/#splitbutton")
+          to = Some("/#/splitbutton")
         )
       )
     )

@@ -18,8 +18,8 @@ object AppRouter {
 
       (emptyRule
         | staticRoute("/", HomeRoute) ~> renderR(_ => HomePage())
-        | staticRoute("/#setup", SetupRoute) ~> renderR(_ => SetupPage())
-        | staticRoute("/#button", ButtonRoute) ~> renderR(_ => ButtonPage()))
+        | staticRoute("/#/setup", SetupRoute) ~> renderR(_ => SetupPage())
+        | staticRoute("/#/button", ButtonRoute) ~> renderR(_ => ButtonPage()))
         .notFound(redirectToPage(HomeRoute)(SetRouteVia.HistoryReplace))
     }
     .renderWith(layout)
