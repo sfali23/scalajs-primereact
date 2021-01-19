@@ -10,13 +10,6 @@ import scala.scalajs.js.annotation.JSImport
 
 object App {
 
-  @js.native
-  @JSImport(
-    "../../../../src/main/resources/assets/app/App.css",
-    JSImport.Namespace
-  )
-  private object AppCss extends ExternalCss
-
   def main(args: Array[String]): Unit = {
     import com.alphasystem.primereact.css._
 

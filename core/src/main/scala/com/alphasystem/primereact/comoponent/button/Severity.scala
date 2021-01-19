@@ -21,4 +21,6 @@ object Severity extends Enum[Severity] with CirceEnum[Severity] {
   final case object Help extends Severity
 
   final case object Danger extends Severity
+
+  final case object Plain extends Severity
 }

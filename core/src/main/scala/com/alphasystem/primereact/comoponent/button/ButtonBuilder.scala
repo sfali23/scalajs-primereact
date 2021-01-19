@@ -12,17 +12,19 @@ case class ButtonBuilder(
   icon: Option[Either[String, Icon]] = None,
   iconPos: Option[IconPos] = None,
   severity: Option[Severity] = None,
+  size: Option[ButtonSize] = None,
   link: Boolean = false,
   raised: Boolean = false,
   rounded: Boolean = false,
   outlined: Boolean = false,
   text: Boolean = false,
   badge: Option[String] = None,
-  badgeTyp: Option[BadgeType] = None) {
+  badgeType: Option[BadgeType] = None) {
 
   private def toClassName: Option[String] = {
     var classNames: List[String] = Nil
-    severity.foreach(value => classNames :+= value.toClassName)
+    severity.map(_.toClassName).foreach(classNames :+= _)
+    size.map(_.toClassName).foreach(classNames :+= _)
     if (link) classNames :+= "p-button-link"
     if (raised) classNames :+= "p-button-raised"
     if (rounded) classNames :+= "p-button-rounded"
@@ -48,7 +50,7 @@ case class ButtonBuilder(
       icon = toIconClass.orUndefined,
       iconPos = iconPos.orUndefined,
       badge = badge.orUndefined,
-      badgeClassName = badgeTyp.map(_.toClassName).orUndefined
+      badgeClassName = badgeType.map(_.toClassName).orUndefined
     )
   }
 }

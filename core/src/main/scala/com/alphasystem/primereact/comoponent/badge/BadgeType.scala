@@ -4,7 +4,7 @@ import enumeratum.EnumEntry.Lowercase
 import enumeratum.{ CirceEnum, Enum, EnumEntry }
 
 sealed trait BadgeType extends EnumEntry with Lowercase {
-  val toClassName = s"pi-badge-$entryName"
+  val toClassName = s"p-badge-$entryName"
 }
 
 object BadgeType extends Enum[BadgeType] with CirceEnum[BadgeType] {
