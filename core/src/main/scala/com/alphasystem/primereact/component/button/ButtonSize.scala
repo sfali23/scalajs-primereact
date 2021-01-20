@@ -1,4 +1,4 @@
-package com.alphasystem.primereact.comoponent.button
+package com.alphasystem.primereact.component.button
 
 import enumeratum.{ CirceEnum, Enum, EnumEntry }
 

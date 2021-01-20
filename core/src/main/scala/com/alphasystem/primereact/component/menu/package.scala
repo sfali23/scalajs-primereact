@@ -1,4 +1,4 @@
-package com.alphasystem.primereact.comoponent
+package com.alphasystem.primereact.component
 
 import io.circe.generic.auto._
 import io.circe.syntax._

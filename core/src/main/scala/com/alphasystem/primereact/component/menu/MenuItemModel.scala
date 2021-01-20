@@ -1,4 +1,4 @@
-package com.alphasystem.primereact.comoponent.menu
+package com.alphasystem.primereact.component.menu
 
 import com.alphasystem.primereact.icons.Icon
 

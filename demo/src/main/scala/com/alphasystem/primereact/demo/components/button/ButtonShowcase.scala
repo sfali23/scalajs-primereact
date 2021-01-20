@@ -1,7 +1,7 @@
 package com.alphasystem.primereact.demo.components.button
 
-import com.alphasystem.primereact.comoponent.badge.BadgeType
-import com.alphasystem.primereact.comoponent.button.{
+import com.alphasystem.primereact.component.badge.BadgeType
+import com.alphasystem.primereact.component.button.{
   ButtonBuilder,
   ButtonSize,
   IconPos,

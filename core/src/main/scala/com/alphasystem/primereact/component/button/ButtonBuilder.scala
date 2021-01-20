@@ -1,7 +1,7 @@
-package com.alphasystem.primereact.comoponent.button
+package com.alphasystem.primereact.component.button
 
-import com.alphasystem.primereact.comoponent.Button
-import com.alphasystem.primereact.comoponent.badge.BadgeType
+import com.alphasystem.primereact.component.Button
+import com.alphasystem.primereact.component.badge.BadgeType
 import com.alphasystem.primereact.icons.Icon
 import io.kinoplan.scalajs.react.bridge.WithProps
 

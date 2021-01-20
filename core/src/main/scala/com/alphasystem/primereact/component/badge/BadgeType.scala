@@ -1,4 +1,4 @@
-package com.alphasystem.primereact.comoponent.badge
+package com.alphasystem.primereact.component.badge
 
 import enumeratum.EnumEntry.Lowercase
 import enumeratum.{ CirceEnum, Enum, EnumEntry }
