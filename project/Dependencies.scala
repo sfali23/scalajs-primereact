@@ -13,6 +13,14 @@ object Dependencies {
   private val IoCirce = "io.circe"
   private val ComBeachape = "com.beachape"
 
+  private val ReactDom = "react-dom"
+  private val React = "react"
+  private val ReactTransitionGroup = "react-transition-group"
+  private val ClassNames = "classnames"
+  private val PrimeReact = "primereact"
+  private val PrimeIcons = "primeicons"
+  private val PrimeFlex = "primeflex"
+
   // NPM dependencies versions
   private val ReactVersion = "17.0.1"
   private val ReactTransitionGroupVersion = "4.4.1"
@@ -25,12 +33,6 @@ object Dependencies {
   private val StyleLoaderVersion = "2.0.0"
   private val UrlLoaderVersion = "4.1.1"
   private val FileLoaderVersion = "6.2.0"
-  private val CopyWebpackPluginVersion = "7.0.0"
-  /*private val SassLoaderVersion = "10.1.1"
-  private val NodeSassVersion = "5.0.0"
-  private val HtmlLoaderVersion = "1.3.2"
-  private val ScriptLoaderVersion = "0.7.2"
-  private val htmlWebpackPluginVersion = "4.5.1"*/
 
   // Scala dependencies versions
   private val ScalajsReactBridgeVersion = "0.2.1"
@@ -60,49 +62,45 @@ object Dependencies {
 
   val Demo = Seq(
     libraryDependencies ++= Seq(
-      OrgScalaJs   %%% "scalajs-dom"          % ScalaJsVersion,
-      OrgTypelevel %%% "cats-core"            % CatsCoreVersion,
-      ScalaJsReact %%% "core"                 % ScalaJsReactVersion,
-      ScalaJsReact %%% "extra"                % ScalaJsReactVersion,
-      IoKinoplan   %%% "scalajs-react-bridge" % ScalajsReactBridgeVersion,
-      ScalaCss     %%% "core"                 % ScalaCssVersion,
-      ScalaCss     %%% "ext-react"            % ScalaCssVersion
     )
   )
 
-  private val React = Seq(
-    "react"                  -> ReactVersion,
-    "react-dom"              -> ReactVersion,
-    "react-transition-group" -> ReactTransitionGroupVersion,
-    "classnames"             -> ClassnamesVersion
+  private val ReactD = Seq(
+    React                -> ReactVersion,
+    ReactDom             -> ReactVersion,
+    ReactTransitionGroup -> ReactTransitionGroupVersion,
+    ClassNames           -> ClassnamesVersion
   )
 
   private val Loaders: Seq[(String, String)] = Seq(
-    "css-loader"          -> CssLoaderVersion,
-    "style-loader"        -> StyleLoaderVersion,
-    "url-loader"          -> UrlLoaderVersion,
-    "file-loader"         -> FileLoaderVersion,
-    "copy-webpack-plugin" -> CopyWebpackPluginVersion
-    //"sass-loader"         -> SassLoaderVersion,
-    //"html-loader"         -> HtmlLoaderVersion,
-    //"script-loader"       -> ScriptLoaderVersion,
-    //"html-webpack-plugin" -> htmlWebpackPluginVersion
+    "css-loader"   -> CssLoaderVersion,
+    "style-loader" -> StyleLoaderVersion,
+    "url-loader"   -> UrlLoaderVersion,
+    "file-loader"  -> FileLoaderVersion
   )
 
   private val ReactTypescript = Seq(
-    "@types/react"     -> TypeReactVersion,
-    "@types/react-dom" -> TypeReactVersion
+    s"@types/$React"    -> TypeReactVersion,
+    s"@types/$ReactDom" -> TypeReactVersion
   )
 
-  private val PrimeReact = Seq(
-    "primereact" -> PrimeReactVersion,
-    "primeicons" -> PrimeIconVersion,
-    "primeflex"  -> PrimeFlexVersion
+  private val PrimeReactD = Seq(
+    PrimeReact -> PrimeReactVersion,
+    PrimeIcons -> PrimeIconVersion,
+    PrimeFlex  -> PrimeFlexVersion
   )
 
-  val CoreNpm: Seq[(String, String)] = React ++ PrimeReact
+  val CoreNpm: Seq[(String, String)] = ReactD ++ PrimeReactD
 
   val DemoNpm: Seq[(String, String)] = CoreNpm
 
   val DevDependencies: Seq[(String, String)] = Loaders ++ ReactTypescript
+
+  val stIgnore = List(
+    ReactDom,
+    ReactTransitionGroup,
+    PrimeIcons,
+    PrimeFlex,
+    ClassNames
+  )
 }

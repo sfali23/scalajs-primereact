@@ -36,7 +36,7 @@ lazy val demo = project
     scalaJSLinkerConfig ~= {
       _.withModuleKind(ModuleKind.CommonJSModule)
     },
-    stIgnore ++= Settings.stIgnore,
+    stIgnore ++= Dependencies.stIgnore,
     jsEnv := new org.scalajs.jsenv.nodejs.NodeJSEnv(),
     scalaJSLinkerConfig ~= (_.withSourceMap(false)),
     webpackDevServerExtraArgs := Seq("--inline"),

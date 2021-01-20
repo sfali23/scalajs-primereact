@@ -16,12 +16,4 @@ object Settings {
     "-Xlint"
   )
 
-  val stIgnore = List(
-    "react-dom",
-    "react-transition-group",
-    "primeicons",
-    "primeflex",
-    "classnames"
-  )
-
 }

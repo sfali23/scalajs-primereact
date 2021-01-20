@@ -1,5 +1,4 @@
 const generatedConfig = require("./scalajs.webpack.config");
-// const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = generatedConfig;
@@ -21,10 +20,6 @@ module.exports = {
     },
     module: {
         rules: [
-            /*{
-                test: /\.scss$/,
-                use: ["sass-loader"]
-            },*/
             {
                 test: /\.css$/,
                 use: [
@@ -48,29 +43,6 @@ module.exports = {
                     },
                 ],
             }
-            /*,
-            {
-                test: /\.exec\.js$/,
-                use: [ 'script-loader' ]
-            }*/
-            /*,
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                include: [
-                    path.resolve(__dirname,'../../../../src/main/resources')
-                ]
-            }*/
-            /*,
-            {
-                test: /\.html$/i,
-                loader: 'html-loader',
-            }*/
         ]
-    },
-    plugins: [
-        /*new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "../../../../src/main/resources", "index.html")
-        })*/
-    ]
+    }
 };
