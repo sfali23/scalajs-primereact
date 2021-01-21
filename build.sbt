@@ -18,8 +18,6 @@ lazy val core = project
     skip in publishLocal := true,
     skip in publishArtifact := true,
     Keys.`package` := file(""),
-    scalaJSUseMainModuleInitializer := false,
-    webpackBundlingMode := BundlingMode.LibraryOnly(),
     Dependencies.Core,
     npmDependencies in Compile ++= Dependencies.CoreNpm,
     npmResolutions in Compile ++= (npmDependencies in Compile).value.toMap
@@ -29,7 +27,6 @@ lazy val core = project
 lazy val demo = project
   .in(file("demo"))
   .dependsOn(core)
-  .aggregate(core)
   .configure(commonProfile)
   .settings(
     scalaJSUseMainModuleInitializer := true,
