@@ -1,12 +1,8 @@
 package com.alphasystem.primereact.demo
 
-import com.alphasystem.primereact.css.ExternalCss
 import com.alphasystem.primereact.demo.css.DemoStyles
 import org.scalajs.dom._
 import com.alphasystem.primereact.demo.router.AppRouter
-
-import scala.scalajs.js
-import scala.scalajs.js.annotation.JSImport
 
 object App {
 
@@ -17,6 +13,9 @@ object App {
     val primeReactCss: ExternalCss = PrimeReactCss
     val primeIconCss: ExternalCss = PrimeIconCss
     val primeFlexCss: ExternalCss = PrimeFlexCss
+    val prismjs = PrismJs
+    val prismCss = PrismCss
+    val prismCoy: ExternalCss = PrismCoy
     val appCss: ExternalCss = AppCss
 
     AppCSS.load(DemoStyles)

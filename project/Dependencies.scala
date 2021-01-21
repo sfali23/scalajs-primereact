@@ -20,6 +20,7 @@ object Dependencies {
   private val PrimeReact = "primereact"
   private val PrimeIcons = "primeicons"
   private val PrimeFlex = "primeflex"
+  private val Prismjs = "prismjs"
 
   // NPM dependencies versions
   private val ReactVersion = "17.0.1"
@@ -33,6 +34,7 @@ object Dependencies {
   private val StyleLoaderVersion = "2.0.0"
   private val UrlLoaderVersion = "4.1.1"
   private val FileLoaderVersion = "6.2.0"
+  private val PrismjsVersion = "1.23.0"
 
   // Scala dependencies versions
   private val ScalajsReactBridgeVersion = "0.2.1"
@@ -66,8 +68,11 @@ object Dependencies {
   )
 
   private val ReactD = Seq(
-    React                -> ReactVersion,
-    ReactDom             -> ReactVersion,
+    React    -> ReactVersion,
+    ReactDom -> ReactVersion
+  )
+
+  private val OtherD = Seq(
     ReactTransitionGroup -> ReactTransitionGroupVersion,
     ClassNames           -> ClassnamesVersion
   )
@@ -90,9 +95,11 @@ object Dependencies {
     PrimeFlex  -> PrimeFlexVersion
   )
 
-  val CoreNpm: Seq[(String, String)] = ReactD ++ PrimeReactD
+  val CoreNpm: Seq[(String, String)] = ReactD ++ OtherD ++ PrimeReactD
 
-  val DemoNpm: Seq[(String, String)] = CoreNpm
+  val DemoNpm: Seq[(String, String)] = Seq(
+    Prismjs -> PrismjsVersion
+  ) ++ CoreNpm
 
   val DevDependencies: Seq[(String, String)] = Loaders ++ ReactTypescript
 
@@ -101,6 +108,7 @@ object Dependencies {
     ReactTransitionGroup,
     PrimeIcons,
     PrimeFlex,
-    ClassNames
+    ClassNames,
+    Prismjs
   )
 }
