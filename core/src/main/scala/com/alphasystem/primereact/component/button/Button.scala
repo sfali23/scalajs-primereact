@@ -1,6 +1,5 @@
-package com.alphasystem.primereact.component
+package com.alphasystem.primereact.component.button
 
-import com.alphasystem.primereact.component.button.IconPos
 import io.kinoplan.scalajs.react.bridge.{ ReactBridgeComponent, WithProps }
 
 import scala.scalajs.js

@@ -11,7 +11,7 @@ object BasicExample extends ScalaCssReactImplicits {
 
     def render: VdomElement = {
       val codeHighlightInitial =
-        CodeHighlighter()("""import com.alphasystem.primereact.component
+        CodeHighlighter()("""import com.alphasystem.primereact.component.button
                             |
                             |Button(
                             |  label = "Save",
