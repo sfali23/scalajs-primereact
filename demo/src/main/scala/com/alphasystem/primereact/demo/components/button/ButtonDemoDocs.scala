@@ -1,6 +1,9 @@
 package com.alphasystem.primereact.demo.components.button
 
-import com.alphasystem.primereact.demo.components.button.docs.BasicExample
+import com.alphasystem.primereact.demo.components.button.docs.{
+  BasicExample,
+  ButtonSeverityExample
+}
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.all._
 import scalacss.ScalaCssReactImplicits
@@ -15,8 +18,8 @@ object ButtonDemoDocs extends ScalaCssReactImplicits {
     def render: VdomElement = {
       div(cls := "content-section documentation")(
         h2("Documentation"),
-        h5("Getting Started"),
         BasicExample(),
+        ButtonSeverityExample(),
         div(
           "Source code can be found ",
           a(
