@@ -1,4 +1,4 @@
-package com.alphasystem.primereact.component
+package com.alphasystem.primereact.component.menu
 
 import io.kinoplan.scalajs.react.bridge.{ ReactBridgeComponent, WithProps }
 import org.scalajs.dom.html

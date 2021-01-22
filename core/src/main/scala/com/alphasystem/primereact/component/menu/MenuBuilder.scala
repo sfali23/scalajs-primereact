@@ -1,6 +1,5 @@
 package com.alphasystem.primereact.component.menu
 
-import com.alphasystem.primereact.component.Menu
 import io.kinoplan.scalajs.react.bridge.WithProps
 import org.scalajs.dom.html
 
