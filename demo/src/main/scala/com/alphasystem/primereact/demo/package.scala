@@ -1,6 +1,5 @@
 package com.alphasystem.primereact
 
-import com.alphasystem.primereact.css.ExternalCss
 import japgolly.scalajs.react.Ref.Simple
 import org.scalajs.dom.html.Element
 

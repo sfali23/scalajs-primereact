@@ -1,24 +1,17 @@
 package com.alphasystem.primereact.component.menu
 
-import com.alphasystem.primereact.icons.Icon
+import scala.scalajs.js
 
-case class MenuItemModel(
-  label: String,
-  icon: Option[String] = None,
-  items: Option[List[MenuItemModel]] = None)
-
-object MenuItemModel {
-
-  def apply(
-    label: String,
-    icon: Option[Icon],
-    items: List[MenuItemModel]
-  ): MenuItemModel = MenuItemModel(
-    label = label,
-    icon = icon.map(_.toClassName),
-    items = items match {
-      case Nil => None
-      case _   => Some(items)
-    }
-  )
+abstract class MenuItemModel extends js.Object {
+  val label: String
+  val icon: js.UndefOr[String] = js.undefined
+  val url: js.UndefOr[String] = js.undefined
+  val disabled: js.UndefOr[Boolean] = js.undefined
+  val target: js.UndefOr[String] = js.undefined
+  val className: js.UndefOr[String] = js.undefined
+  val separator: js.UndefOr[Boolean] = js.undefined
+  val style: js.UndefOr[js.Any] = js.undefined
+  val template: js.UndefOr[js.Any] = js.undefined
+  val items: js.UndefOr[js.Array[MenuItemModel]] = js.undefined
+  def command(): Unit = js.undefined
 }

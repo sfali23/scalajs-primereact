@@ -23,6 +23,5 @@ object Menu extends ReactBridgeComponent {
     baseZIndex: js.UndefOr[Int] = js.undefined,
     autoZIndex: js.UndefOr[Boolean] = js.undefined,
     appendTo: js.UndefOr[html.Element] = js.undefined
-  ): WithProps =
-    auto
+  ): WithProps = auto
 }
