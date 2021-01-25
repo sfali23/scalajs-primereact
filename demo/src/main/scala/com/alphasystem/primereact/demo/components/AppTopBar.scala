@@ -1,9 +1,8 @@
 package com.alphasystem.primereact.demo.components
 
-import com.alphasystem.primereact.component.external.rtg.CSSTransition
-import com.alphasystem.primereact.component.external.rtg.CSSTransition.Timeout
 import com.alphasystem.primereact.demo.css.DemoStyles
 import com.alphasystem.primereact.icons.Icon
+import com.alphasystem.rtg.{ CSSTransition, Timeout }
 import japgolly.scalajs.react.extra.OnUnmount
 import japgolly.scalajs.react.vdom.all._
 import japgolly.scalajs.react.{
@@ -20,8 +19,6 @@ import scalacss.ScalaCssReactImplicits
 import scala.scalajs.js
 
 object AppTopBar extends ScalaCssReactImplicits {
-
-  private val cssTransitionGroup = CSSTransition
 
   private val themeLogoMap = Map(
     "bootstrap4-light-blue"   -> "bootstrap4-light-blue.svg",
