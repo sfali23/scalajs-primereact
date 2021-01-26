@@ -1,6 +1,6 @@
 package com.alphasystem.primereact.component.menu
 
-import io.kinoplan.scalajs.react.bridge.{ ReactBridgeComponent, WithProps }
+import com.payalabs.scalajs.react.bridge.{ ReactBridgeComponent, WithProps }
 import org.scalajs.dom.html
 
 import scala.scalajs.js

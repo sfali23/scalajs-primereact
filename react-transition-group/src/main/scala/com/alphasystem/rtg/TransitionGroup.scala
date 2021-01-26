@@ -1,6 +1,6 @@
 package com.alphasystem.rtg
 
-import io.kinoplan.scalajs.react.bridge.{ ReactBridgeComponent, WithProps }
+import com.payalabs.scalajs.react.bridge.{ ReactBridgeComponent, WithProps }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
