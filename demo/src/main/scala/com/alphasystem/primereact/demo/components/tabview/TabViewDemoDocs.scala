@@ -1,6 +1,7 @@
 package com.alphasystem.primereact.demo.components.tabview
 
 import com.alphasystem.primereact.component.tabview.{ TabPanel, TabView }
+import com.alphasystem.primereact.demo.SourceCodeLink
 import com.alphasystem.primereact.demo.components.tabview.docs.{
   ControlledComponentExample,
   ImportExample,
@@ -10,13 +11,14 @@ import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.all._
 import scalacss.ScalaCssReactImplicits
 
-object TabViewDemoDocs extends ScalaCssReactImplicits {
+object TabViewDemoDocs extends ScalaCssReactImplicits with SourceCodeLink {
 
   case class Backend(b: BackendScope[Unit, Unit]) {
 
     def render: VdomElement = {
       div(cls := "content-section documentation")(
-        TabView()(docs)
+        TabView()(docs),
+        sourceCodeLink("TabViewPage.scala", "tabview/TabViewShowcase.scala")
       )
     }
 

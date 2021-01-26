@@ -1,12 +1,41 @@
 package com.alphasystem.primereact
 
 import japgolly.scalajs.react.Ref.Simple
+import japgolly.scalajs.react.vdom.all._
 import org.scalajs.dom.html.Element
+import scalacss.ScalaCssReactImplicits
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
 package object demo {
+
+  val SourceCodeLinkPrefix: String =
+    "https://github.com/sfali23/scalajs-primereact/blob/main/demo/src/main/scala/com/alphasystem/primereact/demo"
+
+  trait SourceCodeLink {
+    this: ScalaCssReactImplicits =>
+
+    protected def sourceCodeLink(
+      mainCode: String,
+      showcaseCode: String
+    ): VdomElement =
+      div(
+        "Source code can be found ",
+        a(
+          href := s"${SourceCodeLinkPrefix}/pages/$mainCode",
+          target := "_blank",
+          rel := "noopener noreferrer"
+        )("here"),
+        " and ",
+        a(
+          href := s"${SourceCodeLinkPrefix}/components/$showcaseCode",
+          target := "_blank",
+          rel := "noopener noreferrer"
+        )("here"),
+        "."
+      )
+  }
 
   @js.native
   @JSImport(
