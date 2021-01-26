@@ -23,6 +23,13 @@ package object demo {
   object ButtonDemoCss extends ExternalCss
 
   @js.native
+  @JSImport(
+    "../../../../src/main/resources/assets/app/TabViewDemo.css",
+    JSImport.Namespace
+  )
+  object TabViewDemoCss extends ExternalCss
+
+  @js.native
   @JSImport("prismjs", JSImport.Namespace)
   object PrismJs extends js.Object
 

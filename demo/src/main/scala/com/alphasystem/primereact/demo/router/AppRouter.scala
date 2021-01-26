@@ -1,7 +1,12 @@
 package com.alphasystem.primereact.demo.router
 
 import com.alphasystem.primereact.demo.components.Layout
-import com.alphasystem.primereact.demo.pages.{ ButtonPage, HomePage, SetupPage }
+import com.alphasystem.primereact.demo.pages.{
+  ButtonPage,
+  HomePage,
+  SetupPage,
+  TabViewPage
+}
 import japgolly.scalajs.react.extra.router._
 import japgolly.scalajs.react.vdom.all._
 
@@ -11,6 +16,7 @@ object AppRouter {
   case object HomeRoute extends Page
   case object SetupRoute extends Page
   case object ButtonRoute extends Page
+  case object TabViewRoute extends Page
 
   val routerConfig: RouterWithPropsConfig[Page, Unit] = RouterConfigDsl[Page]
     .buildConfig { dsl =>
@@ -19,7 +25,10 @@ object AppRouter {
       (emptyRule
         | staticRoute("/", HomeRoute) ~> renderR(_ => HomePage())
         | staticRoute("/#/setup", SetupRoute) ~> renderR(_ => SetupPage())
-        | staticRoute("/#/button", ButtonRoute) ~> renderR(_ => ButtonPage()))
+        | staticRoute("/#/button", ButtonRoute) ~> renderR(_ => ButtonPage())
+        | staticRoute("/#/tabview", TabViewRoute) ~> renderR(_ =>
+          TabViewPage()
+        ))
         .notFound(redirectToPage(HomeRoute)(SetRouteVia.HistoryReplace))
     }
     .renderWith(layout)

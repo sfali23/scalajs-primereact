@@ -40,5 +40,20 @@ package object `app-menu` {
     )
   )
 
-  val data: List[MenuItemModel] = generalMenuData ++ buttonMenuData
+  private val panelMenuData = List(
+    MenuItemModel(
+      name = "Panel",
+      meta = List("panel"),
+      children = List(
+        MenuItemModel(
+          name = "TabView",
+          meta = List("tabview"),
+          to = Some("/#/tabview")
+        )
+      )
+    )
+  )
+
+  val data: List[MenuItemModel] = generalMenuData ++ buttonMenuData ++
+    panelMenuData
 }
