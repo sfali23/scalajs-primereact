@@ -1,5 +1,6 @@
 package com.alphasystem.primereact.component.tabview
 
+import com.alphasystem.primereact.Handler1
 import com.payalabs.scalajs.react.bridge.{ ReactBridgeComponent, WithProps }
 
 import scala.scalajs.js
@@ -19,6 +20,6 @@ object TabView extends ReactBridgeComponent {
     style: js.UndefOr[js.Object] = js.undefined,
     className: js.UndefOr[String] = js.undefined,
     renderActiveOnly: js.UndefOr[Boolean] = js.undefined,
-    onTabChange: js.UndefOr[TabChangeEvent => Unit] = js.undefined
+    onTabChange: js.UndefOr[Handler1[TabChangeEvent, Unit]] = js.undefined
   ): WithProps = auto
 }

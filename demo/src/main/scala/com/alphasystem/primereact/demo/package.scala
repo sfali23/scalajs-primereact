@@ -37,6 +37,9 @@ package object demo {
       )
   }
 
+  def routerLink(linkName: String, routerLink: String): VdomElement =
+    a(href := s"/#/$routerLink")(linkName)
+
   @js.native
   @JSImport(
     "../../../../src/main/resources/assets/app/App.css",

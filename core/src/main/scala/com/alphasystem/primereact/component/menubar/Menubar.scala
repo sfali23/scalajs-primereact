@@ -1,6 +1,9 @@
-package com.alphasystem.primereact.component.menu
+package com.alphasystem.primereact.component.menubar
 
-import com.payalabs.scalajs.react.bridge.{ ReactBridgeComponent, WithProps }
+import com.payalabs.scalajs.react.bridge.{
+  ReactBridgeComponent,
+  WithPropsNoChildren
+}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -20,5 +23,5 @@ object Menubar extends ReactBridgeComponent {
     className: js.UndefOr[String] = js.undefined,
     start: js.UndefOr[js.Any] = js.undefined,
     end: js.UndefOr[js.Any] = js.undefined
-  ): WithProps = auto
+  ): WithPropsNoChildren = autoNoChildren
 }

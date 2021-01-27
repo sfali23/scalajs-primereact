@@ -1,8 +1,8 @@
-package com.alphasystem.primereact.component.menu
+package com.alphasystem.primereact.component.menumodel
 
 import scala.scalajs.js
 
-abstract class MenuItemModel extends js.Object {
+abstract class MenuItem extends js.Object {
   val label: String
   val icon: js.UndefOr[String] = js.undefined
   val url: js.UndefOr[String] = js.undefined
@@ -12,6 +12,6 @@ abstract class MenuItemModel extends js.Object {
   val separator: js.UndefOr[Boolean] = js.undefined
   val style: js.UndefOr[js.Any] = js.undefined
   val template: js.UndefOr[js.Any] = js.undefined
-  val items: js.UndefOr[js.Array[MenuItemModel]] = js.undefined
+  val items: js.UndefOr[js.Array[MenuItem]] = js.undefined
   def command(): Unit = js.undefined
 }

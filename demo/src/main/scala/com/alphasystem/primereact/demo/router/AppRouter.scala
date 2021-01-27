@@ -4,6 +4,9 @@ import com.alphasystem.primereact.demo.components.Layout
 import com.alphasystem.primereact.demo.pages.{
   ButtonPage,
   HomePage,
+  MenuItemPage,
+  MenuPage,
+  MenubarPage,
   SetupPage,
   TabViewPage
 }
@@ -17,6 +20,9 @@ object AppRouter {
   case object SetupRoute extends Page
   case object ButtonRoute extends Page
   case object TabViewRoute extends Page
+  case object MenuItemModelRoute extends Page
+  case object MenuRoute extends Page
+  case object MenubarRoute extends Page
 
   val routerConfig: RouterWithPropsConfig[Page, Unit] = RouterConfigDsl[Page]
     .buildConfig { dsl =>
@@ -26,8 +32,13 @@ object AppRouter {
         | staticRoute("/", HomeRoute) ~> renderR(_ => HomePage())
         | staticRoute("/#/setup", SetupRoute) ~> renderR(_ => SetupPage())
         | staticRoute("/#/button", ButtonRoute) ~> renderR(_ => ButtonPage())
-        | staticRoute("/#/tabview", TabViewRoute) ~> renderR(_ =>
-          TabViewPage()
+        | staticRoute("/#/tabview", TabViewRoute) ~> renderR(_ => TabViewPage())
+        | staticRoute("/#/menumodel", MenuItemModelRoute) ~> renderR(_ =>
+          MenuItemPage()
+        )
+        | staticRoute("/#/menu", MenuRoute) ~> renderR(_ => MenuPage())
+        | staticRoute("/#/menubar", MenubarRoute) ~> renderR(_ =>
+          MenubarPage()
         ))
         .notFound(redirectToPage(HomeRoute)(SetRouteVia.HistoryReplace))
     }
