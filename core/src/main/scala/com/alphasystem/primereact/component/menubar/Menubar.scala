@@ -1,6 +1,6 @@
 package com.alphasystem.primereact.component.menubar
 
-import com.payalabs.scalajs.react.bridge.{
+import io.kinoplan.scalajs.react.bridge.{
   ReactBridgeComponent,
   WithPropsNoChildren
 }

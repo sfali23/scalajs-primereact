@@ -1,9 +1,9 @@
 package com.alphasystem
 
-import com.payalabs.scalajs.react.bridge.JsWriter
 import io.circe.generic.auto._
 import io.circe.scalajs.convertJsonToJs
 import io.circe.syntax._
+import io.kinoplan.scalajs.react.bridge.JsWriter
 
 package object rtg {
 

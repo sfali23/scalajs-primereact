@@ -15,7 +15,7 @@ object Settings {
   private object ScalaModule {
     val ScalaJs = "org.scala-js"
     val ScalaJsReact = "com.github.japgolly.scalajs-react"
-    val Paylabs = "com.payalabs"
+    val Kinoplan = "io.kinoplan"
     val Typelevel = "org.typelevel"
     val ScalaCss = "com.github.japgolly.scalacss"
     val Circe = "io.circe"
@@ -25,7 +25,7 @@ object Settings {
   // Scala dependencies versions
   private object ScalaVersion {
     val ScalaJs = "1.1.0"
-    val ScalajsReactBridge = "0.8.5"
+    val ScalajsReactBridge = "0.2.1"
     val ScalaJsReact = "1.7.7"
     val CatsCore = "2.1.1"
     val ScalaCss = "0.6.1"
@@ -69,7 +69,7 @@ object Settings {
       ScalaModule.ScalaJs      %%% "scalajs-dom"          % ScalaVersion.ScalaJs,
       ScalaModule.ScalaJsReact %%% "core"                 % ScalaVersion.ScalaJsReact,
       ScalaModule.ScalaJsReact %%% "extra"                % ScalaVersion.ScalaJsReact,
-      ScalaModule.Paylabs      %%% "scalajs-react-bridge" % ScalaVersion.ScalajsReactBridge
+      ScalaModule.Kinoplan     %%% "scalajs-react-bridge" % ScalaVersion.ScalajsReactBridge
     )
   )
 

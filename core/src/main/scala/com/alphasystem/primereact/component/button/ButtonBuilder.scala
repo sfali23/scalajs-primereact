@@ -2,7 +2,7 @@ package com.alphasystem.primereact.component.button
 
 import com.alphasystem.primereact.component.badge.BadgeType
 import com.alphasystem.primereact.icons.Icon
-import com.payalabs.scalajs.react.bridge.WithProps
+import io.kinoplan.scalajs.react.bridge.WithProps
 
 import scala.scalajs.js.JSConverters._
 

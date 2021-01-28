@@ -1,7 +1,7 @@
 package com.alphasystem.primereact.component.tabview
 
 import com.alphasystem.primereact.Handler1
-import com.payalabs.scalajs.react.bridge.{ ReactBridgeComponent, WithProps }
+import io.kinoplan.scalajs.react.bridge.{ ReactBridgeComponent, WithProps }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
