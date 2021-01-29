@@ -21,6 +21,20 @@ package object `app-menu` {
     )
   )
 
+  private val formMenuData = List(
+    MenuItemModel(
+      name = "Form",
+      meta = List("menu"),
+      children = List(
+        MenuItemModel(
+          name = "InputText",
+          meta = List("inputtext"),
+          to = Some("/#/inputtext")
+        )
+      )
+    )
+  )
+
   private val buttonMenuData = List(
     MenuItemModel(
       name = "Button",
@@ -78,6 +92,6 @@ package object `app-menu` {
     )
   )
 
-  val data: List[MenuItemModel] = generalMenuData ++ buttonMenuData ++
-    panelMenuData ++ menuMenuData
+  val data: List[MenuItemModel] = generalMenuData ++ formMenuData ++
+    buttonMenuData ++ panelMenuData ++ menuMenuData
 }

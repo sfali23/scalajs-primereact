@@ -1,6 +1,8 @@
 package com.alphasystem.primereact
 
+import com.alphasystem.primereact.demo.components.CodeHighlighter
 import japgolly.scalajs.react.Ref.Simple
+import japgolly.scalajs.react.feature.ReactFragment
 import japgolly.scalajs.react.vdom.all._
 import org.scalajs.dom.html.Element
 import scalacss.ScalaCssReactImplicits
@@ -39,6 +41,17 @@ package object demo {
 
   def routerLink(linkName: String, routerLink: String): VdomElement =
     a(href := s"/#/$routerLink")(linkName)
+
+  def importExample(className: String): VdomElement =
+    ReactFragment(
+      h5("Import"),
+      CodeHighlighter()(
+        s"""
+           |import $className
+           |
+           |""".stripMargin
+      )
+    )
 
   @js.native
   @JSImport(

@@ -1,7 +1,7 @@
 package com.alphasystem.primereact.demo.components.button
 
 import com.alphasystem.primereact.component.tabview.{ TabPanel, TabView }
-import com.alphasystem.primereact.demo.{ SourceCodeLink, SourceCodeLinkPrefix }
+import com.alphasystem.primereact.demo.SourceCodeLink
 import com.alphasystem.primereact.demo.components.button.docs.{
   BasicExample,
   ButtonSeverityExample

@@ -4,6 +4,7 @@ import com.alphasystem.primereact.demo.components.Layout
 import com.alphasystem.primereact.demo.pages.{
   ButtonPage,
   HomePage,
+  InputTextPage,
   MenuItemPage,
   MenuPage,
   MenubarPage,
@@ -23,6 +24,7 @@ object AppRouter {
   case object MenuItemModelRoute extends Page
   case object MenuRoute extends Page
   case object MenubarRoute extends Page
+  case object InputTextRoute extends Page
 
   val routerConfig: RouterWithPropsConfig[Page, Unit] = RouterConfigDsl[Page]
     .buildConfig { dsl =>
@@ -37,8 +39,9 @@ object AppRouter {
           MenuItemPage()
         )
         | staticRoute("/#/menu", MenuRoute) ~> renderR(_ => MenuPage())
-        | staticRoute("/#/menubar", MenubarRoute) ~> renderR(_ =>
-          MenubarPage()
+        | staticRoute("/#/menubar", MenubarRoute) ~> renderR(_ => MenubarPage())
+        | staticRoute("/#/inputtext", InputTextRoute) ~> renderR(_ =>
+          InputTextPage()
         ))
         .notFound(redirectToPage(HomeRoute)(SetRouteVia.HistoryReplace))
     }

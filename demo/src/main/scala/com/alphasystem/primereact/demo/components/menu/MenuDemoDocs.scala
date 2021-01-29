@@ -2,7 +2,7 @@ package com.alphasystem.primereact.demo.components.menu
 
 import com.alphasystem.primereact.component.tabview.{ TabPanel, TabView }
 import com.alphasystem.primereact.demo.components.CodeHighlighter
-import com.alphasystem.primereact.demo.routerLink
+import com.alphasystem.primereact.demo.{ importExample, routerLink }
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.feature.ReactFragment
 import japgolly.scalajs.react.vdom.all._
@@ -16,7 +16,7 @@ object MenuDemoDocs extends ScalaCssReactImplicits {
       div(cls := "content-section documentation")(
         TabView()(
           TabPanel(header = "Documentation")(
-            importExample,
+            importExample("com.alphasystem.primereact.component.menu.Menu"),
             h5("MenuModel API"),
             p(
               span(
@@ -31,17 +31,6 @@ object MenuDemoDocs extends ScalaCssReactImplicits {
         )
       )
     }
-
-    private def importExample =
-      ReactFragment(
-        h5("Import"),
-        CodeHighlighter()(
-          """
-            |import com.alphasystem.primereact.component.menu.Menu
-            |
-            |""".stripMargin
-        )
-      )
 
     private def gettingStartedExample =
       ReactFragment(
