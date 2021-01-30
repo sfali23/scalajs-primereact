@@ -1,13 +1,14 @@
 package com.alphasystem.primereact.component.inputtext
 
+import com.alphasystem.primereact.component.keyfilter.KeyFilter
 import io.kinoplan.scalajs.react.bridge.{
   ReactBridgeComponent,
   WithPropsNoChildren
 }
 
 import scala.scalajs.js
-import scala.scalajs.js.{ UndefOr, undefined }
 import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.{ RegExp, UndefOr, undefined, | }
 
 object InputText extends ReactBridgeComponent {
 
@@ -18,7 +19,7 @@ object InputText extends ReactBridgeComponent {
   override protected lazy val componentValue: js.Function = RawComponent
 
   def apply(
-    keyfilter: UndefOr[js.Any] = undefined,
+    keyfilter: UndefOr[KeyFilter | RegExp] = undefined,
     validateOnly: UndefOr[Boolean] = undefined,
     tooltip: UndefOr[js.Any] = undefined,
     tooltipOptions: UndefOr[js.Object] = undefined

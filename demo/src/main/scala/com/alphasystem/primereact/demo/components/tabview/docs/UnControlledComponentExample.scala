@@ -19,16 +19,16 @@ object UnControlledComponentExample extends ScalaCssReactImplicits {
           i("activeIndex"),
           span(""" property in uncontrolled mode however it is evaluated at initial rendering and ignored in further 
                  |updates. If you programmatically need to update the active tab, prefer to use the component as 
-                 |controlled.""".stripMargin),
-          CodeHighlighter()(
-            """
-              |TabView()(
-              |  TabPanel(header = "Header I")(div("Content I")),
-              |  TabPanel(header = "Header II")(div("Content II")),
-              |  TabPanel(header = "Header III")(div("Content III"))
-              |)
-              |""".stripMargin
-          )
+                 |controlled.""".stripMargin)
+        ),
+        CodeHighlighter()(
+          """
+            |TabView()(
+            |  TabPanel(header = "Header I")(div("Content I")),
+            |  TabPanel(header = "Header II")(div("Content II")),
+            |  TabPanel(header = "Header III")(div("Content III"))
+            |)
+            |""".stripMargin
         )
       )
   }

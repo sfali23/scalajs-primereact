@@ -42,14 +42,15 @@ package object demo {
   def routerLink(linkName: String, routerLink: String): VdomElement =
     a(href := s"/#/$routerLink")(linkName)
 
-  def importExample(className: String): VdomElement =
+  def importExample(classNames: String*): VdomElement =
     ReactFragment(
       h5("Import"),
       CodeHighlighter()(
-        s"""
-           |import $className
-           |
-           |""".stripMargin
+        classNames
+          .map { className =>
+            s"import $className${System.lineSeparator()}"
+          }
+          .mkString("")
       )
     )
 

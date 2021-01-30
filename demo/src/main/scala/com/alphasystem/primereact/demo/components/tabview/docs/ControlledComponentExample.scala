@@ -18,25 +18,25 @@ object ControlledComponentExample extends ScalaCssReactImplicits {
           i("activeIndex"),
           span(" and "),
           i("onTabChange"),
-          span(" properties need to be defined to control the state."),
-          CodeHighlighter()(
-            """
-              |final case class State(activeIndex: Int = 1) {
-              |  def updateActiveIndex(newValue: Int): State = copy(activeIndex = newValue)
-              |}
-              |
-              |TabView(
-              |  activeIndex = state.activeIndex,
-              |  onTabChange = (e: TabChangeEvent) =>
-              |    // "b" is of type BackendScope[Unit, State]
-              |    b.modState(_.updateActiveIndex(e.index)).runNow()
-              |)(
-              |  TabPanel(header = "Header I")(div("Content I")),
-              |  TabPanel(header = "Header II")(div("Content II")),
-              |  TabPanel(header = "Header III")(div("Content III"))
-              |)
-              |""".stripMargin
-          )
+          span(" properties need to be defined to control the state.")
+        ),
+        CodeHighlighter()(
+          """
+            |final case class State(activeIndex: Int = 1) {
+            |  def updateActiveIndex(newValue: Int): State = copy(activeIndex = newValue)
+            |}
+            |
+            |TabView(
+            |  activeIndex = state.activeIndex,
+            |  onTabChange = (e: TabChangeEvent) =>
+            |    // "b" is of type BackendScope[Unit, State]
+            |    b.modState(_.updateActiveIndex(e.index)).runNow()
+            |)(
+            |  TabPanel(header = "Header I")(div("Content I")),
+            |  TabPanel(header = "Header II")(div("Content II")),
+            |  TabPanel(header = "Header III")(div("Content III"))
+            |)
+            |""".stripMargin
         )
       )
   }

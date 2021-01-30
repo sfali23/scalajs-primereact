@@ -6,4 +6,4 @@ case class MenuItemModel(
   href: Option[String] = None,
   badge: Option[String] = None,
   meta: List[String] = Nil,
-  children: List[MenuItemModel] = Nil)
+  children: Option[List[MenuItemModel]] = None)

@@ -67,7 +67,7 @@ object AppMenu extends ScalaCssReactImplicits {
       submenuKey: String
     ): VdomElement = {
       val listItems =
-        item.children.zipWithIndex.map { case (model, index) =>
+        item.children.getOrElse(Nil).zipWithIndex.map { case (model, index) =>
           li(role := "menuitem", key := s"menuitem_${submenuKey}_$index")(
             renderLink(model)
           )
@@ -83,7 +83,7 @@ object AppMenu extends ScalaCssReactImplicits {
       item: MenuItemModel,
       menuitemIndex: Long
     ) = {
-      item.children.zipWithIndex.map { case (model, index) =>
+      item.children.getOrElse(Nil).zipWithIndex.map { case (model, index) =>
         val submenuKey = s"${menuitemIndex}_$index"
         val link = renderLink(model)
         val submenus =

@@ -2,13 +2,17 @@ package com.alphasystem.primereact.demo.components.menu
 
 import com.alphasystem.primereact.component.tabview.{ TabPanel, TabView }
 import com.alphasystem.primereact.demo.components.CodeHighlighter
-import com.alphasystem.primereact.demo.{ importExample, routerLink }
+import com.alphasystem.primereact.demo.{
+  SourceCodeLink,
+  importExample,
+  routerLink
+}
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.feature.ReactFragment
 import japgolly.scalajs.react.vdom.all._
 import scalacss.ScalaCssReactImplicits
 
-object MenuDemoDocs extends ScalaCssReactImplicits {
+object MenuDemoDocs extends ScalaCssReactImplicits with SourceCodeLink {
 
   case class Backend(b: BackendScope[Unit, Unit]) {
 
@@ -26,7 +30,8 @@ object MenuDemoDocs extends ScalaCssReactImplicits {
               span(" for details.")
             ),
             gettingStartedExample,
-            subMenuExample
+            subMenuExample,
+            sourceCodeLink("MenuPage.scala", "menu/MenuShowcase.scala")
           )
         )
       )
