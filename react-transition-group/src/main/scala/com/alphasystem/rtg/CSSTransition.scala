@@ -26,16 +26,14 @@ object CSSTransition extends ReactBridgeComponent {
     exit: UndefOr[Boolean] = undefined,
     timeout: UndefOr[Int | Timeout] = undefined,
     addEndListener: UndefOr[js.Function] = undefined,
-    onEnter: UndefOr[js.Function2[UndefOr[html.Element], UndefOr[Boolean], _]] =
+    onEnter: UndefOr[(UndefOr[html.Element], UndefOr[Boolean]) => Unit] =
       undefined,
-    onEntering: UndefOr[
-      js.Function2[UndefOr[html.Element], UndefOr[Boolean], _]
-    ] = undefined,
-    onEntered: UndefOr[
-      js.Function2[UndefOr[html.Element], UndefOr[Boolean], _]
-    ],
-    onExit: UndefOr[js.Function1[UndefOr[html.Element], _]] = undefined,
-    onExiting: UndefOr[js.Function1[UndefOr[html.Element], _]] = undefined,
-    onExited: UndefOr[js.Function1[UndefOr[html.Element], _]] = undefined
+    onEntering: UndefOr[(UndefOr[html.Element], UndefOr[Boolean]) => Unit] =
+      undefined,
+    onEntered: UndefOr[(UndefOr[html.Element], UndefOr[Boolean]) => Unit] =
+      undefined,
+    onExit: UndefOr[UndefOr[html.Element] => Unit] = undefined,
+    onExiting: UndefOr[UndefOr[html.Element] => Unit] = undefined,
+    onExited: UndefOr[UndefOr[html.Element] => Unit] = undefined
   ): WithProps = auto
 }

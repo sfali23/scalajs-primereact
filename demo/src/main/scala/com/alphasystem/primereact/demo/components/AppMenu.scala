@@ -1,10 +1,12 @@
 package com.alphasystem.primereact.demo.components
 
 import com.alphasystem.primereact.demo.components.`app-menu`._
+import com.alphasystem.rtg.{ CSSTransition, Timeout }
 import japgolly.scalajs.react.feature.ReactFragment
 import japgolly.scalajs.react.vdom.all._
 import japgolly.scalajs.react.{
   BackendScope,
+  Callback,
   CallbackTo,
   ReactEventFromHtml,
   ScalaComponent
@@ -13,9 +15,18 @@ import scalacss.ScalaCssReactImplicits
 
 object AppMenu extends ScalaCssReactImplicits {
 
-  case class Props()
+  type Props = Unit
 
-  case class State() {
+  case class State(activeSubmenus: Map[String, Boolean] = Map.empty) {
+
+    def toggleActiveSubMenu(name: String): State = {
+      val currentValue = this.activeSubmenus.getOrElse(name, false)
+      val activeSubmenus = this.activeSubmenus + (name -> !currentValue)
+      copy(activeSubmenus = activeSubmenus)
+    }
+
+    def isSubmenuActive(name: String): Boolean =
+      activeSubmenus.getOrElse(name, false)
 
     def doNothing(): State = {
       this
@@ -72,9 +83,17 @@ object AppMenu extends ScalaCssReactImplicits {
             renderLink(model)
           )
         }
-      div(cls := "p-toggleable-content")(
-        ul(role := "menu")(
-          listItems: _*
+
+      CSSTransition(
+        classNames = "p-toggleable-content",
+        in = isSubmenuActive(item.name),
+        timeout = Timeout(enter = Some(100), exit = Some(450)),
+        unmountOnExit = true
+      )(
+        div(cls := "p-toggleable-content")(
+          ul(role := "menu")(
+            listItems: _*
+          )
         )
       )
     }
@@ -108,13 +127,15 @@ object AppMenu extends ScalaCssReactImplicits {
       itemName: String
     )(event: ReactEventFromHtml
     ): CallbackTo[Unit] = {
-      //TODO:
-      println(s">>>> $itemName")
-      event.preventDefault()
-      b.modState(_.doNothing())
+      b.modState(_.toggleActiveSubMenu(itemName)) >> Callback {
+        event.preventDefault()
+      }
     }
 
-    def render(props: Props, state: State): VdomElement = {
+    private def isSubmenuActive(name: String) =
+      b.state.map(_.isSubmenuActive(name)).runNow()
+
+    def render(state: State): VdomElement = {
       div(cls := "layout-sidebar", role := "navigation")(
         div(cls := "layout-menu", role := "menubar")(
           renderCategoryItems: _*
@@ -129,5 +150,5 @@ object AppMenu extends ScalaCssReactImplicits {
     .renderBackend[Backend]
     .build
 
-  def apply(): VdomElement = component(Props())
+  def apply(): VdomElement = component()
 }
