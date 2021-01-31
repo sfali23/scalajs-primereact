@@ -3,7 +3,7 @@ package com.alphasystem.primereact.component.menumodel
 import scala.scalajs.js
 
 abstract class MenuItem extends js.Object {
-  val label: String
+  val label: js.UndefOr[String] = js.undefined
   val icon: js.UndefOr[String] = js.undefined
   val url: js.UndefOr[String] = js.undefined
   val disabled: js.UndefOr[Boolean] = js.undefined

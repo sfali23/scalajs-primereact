@@ -25,45 +25,79 @@ object MenuItemShowcase extends ScalaCssReactImplicits {
               | of an item in a menu.""".stripMargin),
           CodeHighlighter()(
             """
-              |import com.alphasystem.primereact.component.menumodel.MenuItem
+              |package com.alphasystem.primereact.component.menumodel
               |
-              |val items = js.Array(
-              |      new MenuItem {
-              |        override val label: String = "Options"
+              |import scala.scalajs.js
               |
-              |        override val items: UndefOr[js.Array[MenuItem]] =
-              |          js.Array(
-              |            new MenuItem {
-              |              override val label: String = "Update"
-              |              override val icon: UndefOr[String] = Icon.Refresh.toClassName
-              |              override def command(): Unit = println(label)
-              |            },
-              |            new MenuItem {
-              |              override val label: String = "Delete"
-              |              override val icon: UndefOr[String] = Icon.Times.toClassName
-              |              override def command(): Unit = println(label)
-              |            }
-              |          )
-              |      },
-              |      new MenuItem {
-              |        override val label: String = "Navigate"
+              |abstract class MenuItem extends js.Object {
+              |  val label: js.UndefOr[String] = js.undefined
+              |  val icon: js.UndefOr[String] = js.undefined
+              |  val url: js.UndefOr[String] = js.undefined
+              |  val disabled: js.UndefOr[Boolean] = js.undefined
+              |  val target: js.UndefOr[String] = js.undefined
+              |  val className: js.UndefOr[String] = js.undefined
+              |  val separator: js.UndefOr[Boolean] = js.undefined
+              |  val style: js.UndefOr[js.Any] = js.undefined
+              |  val template: js.UndefOr[js.Any] = js.undefined
+              |  val items: js.UndefOr[js.Array[MenuItem]] = js.undefined
+              |  def command(): Unit = js.undefined
+              |}
+              |""".stripMargin
+          ),
+          h5("Builder API"),
+          p(
+            span("In order to facilitate the constructing of "),
+            code("MenuItem"),
+            span(" a "),
+            code("MenuItemModelBuilder"),
+            span(" is provided, following illustrate how to use "),
+            code("MenuItemModelBuilder"),
+            span(" to build "),
+            code("MenuItem"),
+            span(".")
+          ),
+          CodeHighlighter()(
+            """
+              |import com.alphasystem.primereact.component.menumodel.MenuItemModelBuilder
               |
-              |        override val items: UndefOr[js.Array[MenuItem]] =
-              |          js.Array(
-              |            new MenuItem {
-              |              override val label: String = "React Website"
-              |              override val icon: UndefOr[String] = Icon.ExternalLink.toClassName
-              |              override val url: UndefOr[String] = "https://reactjs.org/"
-              |            },
-              |            new MenuItem {
-              |              override val label: String = "Router"
-              |              override val icon: UndefOr[String] = Icon.Upload.toClassName
+              |private val updateMenuItem = MenuItemModelBuilder()
+              |    .label("Update")
+              |    .icon(Icon.Refresh)
+              |    .command(() => println("Update"))
+              |    .toModel
               |
-              |              override def command(): Unit = window.location.hash =
-              |                "/#/fileupload"
-              |            }
-              |          )
-              |      }
+              |  private val deleteMenuItem = MenuItemModelBuilder()
+              |    .label("Delete")
+              |    .icon(Icon.Times)
+              |    .command(() => println("Delete"))
+              |    .toModel
+              |
+              |  private val optionsMenuItem = MenuItemModelBuilder()
+              |    .label("Options")
+              |    .item(updateMenuItem, deleteMenuItem)
+              |    .toModel
+              |
+              |  private val reactMenuItem = MenuItemModelBuilder()
+              |    .label("React Website")
+              |    .icon(Icon.ExternalLink)
+              |    .url("https://reactjs.org/")
+              |    .toModel
+              |
+              |  private val routerMenuItem = MenuItemModelBuilder()
+              |    .label("Router")
+              |    .icon(Icon.Upload)
+              |    .command(() => window.location.hash = "/#/fileupload")
+              |    .toModel
+              |
+              |  private val navigateMenuItem = MenuItemModelBuilder()
+              |    .label("Navigate")
+              |    .item(reactMenuItem, routerMenuItem)
+              |    .toModel
+              |
+              |  val items =
+              |    js.Array(
+              |      optionsMenuItem,
+              |      navigateMenuItem
               |    )
               |""".stripMargin
           )

@@ -1,50 +1,50 @@
 package com.alphasystem.primereact.demo.components
 
-import com.alphasystem.primereact.component.menumodel.MenuItem
+import com.alphasystem.primereact.component.menumodel.MenuItemModelBuilder
 import com.alphasystem.primereact.icons.Icon
 import typings.std.global.window
 
 import scala.scalajs.js
-import scala.scalajs.js.UndefOr
 
 package object menu {
 
-  val items: js.Array[MenuItem] = js.Array(
-    new MenuItem {
-      override val label: String = "Options"
+  private val updateMenuItem = MenuItemModelBuilder()
+    .label("Update")
+    .icon(Icon.Refresh)
+    .command(() => println("Update"))
+    .toModel
 
-      override val items: UndefOr[js.Array[MenuItem]] =
-        js.Array(
-          new MenuItem {
-            override val label: String = "Update"
-            override val icon: UndefOr[String] = Icon.Refresh.toClassName
-            override def command(): Unit = println(label)
-          },
-          new MenuItem {
-            override val label: String = "Delete"
-            override val icon: UndefOr[String] = Icon.Times.toClassName
-            override def command(): Unit = println(label)
-          }
-        )
-    },
-    new MenuItem {
-      override val label: String = "Navigate"
+  private val deleteMenuItem = MenuItemModelBuilder()
+    .label("Delete")
+    .icon(Icon.Times)
+    .command(() => println("Delete"))
+    .toModel
 
-      override val items: UndefOr[js.Array[MenuItem]] =
-        js.Array(
-          new MenuItem {
-            override val label: String = "React Website"
-            override val icon: UndefOr[String] = Icon.ExternalLink.toClassName
-            override val url: UndefOr[String] = "https://reactjs.org/"
-          },
-          new MenuItem {
-            override val label: String = "Router"
-            override val icon: UndefOr[String] = Icon.Upload.toClassName
+  private val optionsMenuItem = MenuItemModelBuilder()
+    .label("Options")
+    .item(updateMenuItem, deleteMenuItem)
+    .toModel
 
-            override def command(): Unit = window.location.hash =
-              "/#/fileupload"
-          }
-        )
-    }
-  )
+  private val reactMenuItem = MenuItemModelBuilder()
+    .label("React Website")
+    .icon(Icon.ExternalLink)
+    .url("https://reactjs.org/")
+    .toModel
+
+  private val routerMenuItem = MenuItemModelBuilder()
+    .label("Router")
+    .icon(Icon.Upload)
+    .command(() => window.location.hash = "/#/fileupload")
+    .toModel
+
+  private val navigateMenuItem = MenuItemModelBuilder()
+    .label("Navigate")
+    .item(reactMenuItem, routerMenuItem)
+    .toModel
+
+  private[menu] val items =
+    js.Array(
+      optionsMenuItem,
+      navigateMenuItem
+    )
 }

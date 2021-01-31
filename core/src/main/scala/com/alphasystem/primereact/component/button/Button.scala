@@ -1,6 +1,9 @@
 package com.alphasystem.primereact.component.button
 
-import io.kinoplan.scalajs.react.bridge.{ ReactBridgeComponent, WithProps }
+import io.kinoplan.scalajs.react.bridge.{
+  ReactBridgeComponent,
+  WithPropsNoChildren
+}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -22,5 +25,5 @@ object Button extends ReactBridgeComponent {
     badgeClassName: js.UndefOr[String] = js.undefined,
     tooltip: js.UndefOr[js.Any] = js.undefined,
     tooltipOptions: js.UndefOr[js.Object] = js.undefined
-  ): WithProps = auto
+  ): WithPropsNoChildren = autoNoChildren
 }

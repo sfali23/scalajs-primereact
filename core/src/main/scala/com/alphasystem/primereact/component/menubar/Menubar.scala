@@ -4,6 +4,7 @@ import io.kinoplan.scalajs.react.bridge.{
   ReactBridgeComponent,
   WithPropsNoChildren
 }
+import japgolly.scalajs.react.vdom.VdomElement
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -21,7 +22,7 @@ object Menubar extends ReactBridgeComponent {
     model: js.UndefOr[js.Any] = js.undefined,
     style: js.UndefOr[String] = js.undefined,
     className: js.UndefOr[String] = js.undefined,
-    start: js.UndefOr[js.Any] = js.undefined,
-    end: js.UndefOr[js.Any] = js.undefined
+    start: js.UndefOr[VdomElement] = js.undefined,
+    end: js.UndefOr[VdomElement] = js.undefined
   ): WithPropsNoChildren = autoNoChildren
 }

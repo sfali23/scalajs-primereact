@@ -2,7 +2,7 @@ package com.alphasystem.primereact.component.button
 
 import com.alphasystem.primereact.component.badge.BadgeType
 import com.alphasystem.primereact.icons.Icon
-import io.kinoplan.scalajs.react.bridge.WithProps
+import io.kinoplan.scalajs.react.bridge.WithPropsNoChildren
 
 import scala.scalajs.js.JSConverters._
 
@@ -82,7 +82,7 @@ class ButtonBuilder {
   private def toClassName: Option[String] =
     if (classNames.isEmpty) None else Some(classNames.mkString(" "))
 
-  def toButton: WithProps =
+  def toButton: WithPropsNoChildren =
     Button(
       label = label.orUndefined,
       className = toClassName.orUndefined,
