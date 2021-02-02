@@ -44,6 +44,11 @@ class ButtonBuilder {
     this
   }
 
+  def classNames(cs: String*): ButtonBuilder = {
+    this.classNames :+= cs.mkString(" ")
+    this
+  }
+
   def severity(severity: Severity): ButtonBuilder = {
     this.classNames :+= severity.toClassName
     this

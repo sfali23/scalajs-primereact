@@ -39,6 +39,7 @@ object AppRouter {
   case object SliderRoute extends Page
   case object TriStateCheckboxRoute extends Page
   case object ToggleButtonRoute extends Page
+  case object ToastRouter extends Page
 
   val routerConfig: RouterWithPropsConfig[Page, Unit] = RouterConfigDsl[Page]
     .buildConfig { dsl =>
@@ -115,7 +116,8 @@ object AppRouter {
         )
         | staticRoute("/#/togglebutton", ToggleButtonRoute) ~> renderR(_ =>
           ToggleButtonPage()
-        ))
+        )
+        | staticRoute("/#/toast", ToastRouter) ~> renderR(_ => ToastPage()))
         .notFound(redirectToPage(HomeRoute)(SetRouteVia.HistoryReplace))
     }
     .renderWith(layout)
