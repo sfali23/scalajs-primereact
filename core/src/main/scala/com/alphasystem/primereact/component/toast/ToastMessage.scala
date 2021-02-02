@@ -18,22 +18,22 @@ trait ToastMessage extends js.Object {
 object ToastMessage {
 
   def apply(
-    severity: Option[Severity] = None,
-    summary: Option[js.Any] = None,
-    detail: Option[js.Any] = None,
-    content: Option[js.Any] = None,
-    closable: Option[Boolean] = None,
-    sticky: Option[Boolean] = None,
-    life: Option[Int] = None
+    severity: UndefOr[Severity] = undefined,
+    summary: UndefOr[js.Any] = undefined,
+    detail: UndefOr[js.Any] = undefined,
+    content: UndefOr[js.Any] = undefined,
+    closable: UndefOr[Boolean] = undefined,
+    sticky: UndefOr[Boolean] = undefined,
+    life: UndefOr[Int] = undefined
   ): ToastMessage = {
     val o: Map[String, Any] = Map(
-      "severity" -> severity.map(_.entryName).orUndefined,
-      "summary"  -> summary.orUndefined,
-      "detail"   -> detail.orUndefined,
-      "content"  -> content.orUndefined,
-      "closable" -> closable.orUndefined,
-      "sticky"   -> sticky.orUndefined,
-      "life"     -> life.orUndefined
+      "severity" -> severity.map(_.entryName),
+      "summary"  -> summary,
+      "detail"   -> detail,
+      "content"  -> content,
+      "closable" -> closable,
+      "sticky"   -> sticky,
+      "life"     -> life
     )
     o.toJSDictionary.asInstanceOf[js.Object].asInstanceOf[ToastMessage]
   }

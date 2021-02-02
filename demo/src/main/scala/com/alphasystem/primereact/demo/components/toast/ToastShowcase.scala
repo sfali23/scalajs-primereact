@@ -28,9 +28,9 @@ object ToastShowcase extends ScalaCssReactImplicits {
     "../../../../src/main/resources/assets/app/ToastDemo.css",
     JSImport.Namespace
   )
-  private object TabViewDemoCss extends ExternalCss
+  private object ToastDemoCss extends ExternalCss
 
-  private val css = TabViewDemoCss
+  private val css = ToastDemoCss
 
   case class Backend(b: BackendScope[Unit, Unit]) {
 
@@ -48,11 +48,11 @@ object ToastShowcase extends ScalaCssReactImplicits {
       sticky: Boolean = false
     ) =
       ToastMessage(
-        severity = Some(severity),
-        summary = Some(summary),
-        detail = Some(detail),
-        sticky = Some(sticky),
-        life = Some(3000)
+        severity = severity,
+        summary = summary,
+        detail = detail,
+        sticky = sticky,
+        life = 3000
       )
 
     private def showSuccess =
@@ -202,8 +202,8 @@ object ToastShowcase extends ScalaCssReactImplicits {
       toastBC.foreach(
         _.raw.show(
           ToastMessage(
-            severity = Some(Severity.Warn),
-            content = Some(content.rawElement)
+            severity = Severity.Warn,
+            content = content.rawElement
           )
         )
       )
