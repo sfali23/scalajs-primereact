@@ -1,6 +1,6 @@
 lazy val `scalajs-primereact` = project
   .in(file("."))
-  .aggregate(core, `react-transition-group`, demo)
+  .aggregate(core, `react-transition-group`, `scalajs-axios`, demo)
 
 inThisBuild(
   List(
@@ -26,18 +26,28 @@ lazy val core = project
 lazy val `react-transition-group` = project
   .in(file("react-transition-group"))
   .configure(commonProfile)
-  .enablePlugins(ScalaJSPlugin)
+  .enablePlugins(ScalaJSBundlerPlugin)
   .settings(
     scalaJSUseMainModuleInitializer := false,
     Settings.ReactTransitionGroupDependencies,
     npmDependencies in Compile ++= Settings.ReactTransitionGroupPackages,
     npmResolutions in Compile ++= (npmDependencies in Compile).value.toMap
   )
+
+lazy val `scalajs-axios` = project
+  .in(file("scalajs-axios"))
+  .configure(commonProfile)
   .enablePlugins(ScalaJSBundlerPlugin)
+  .settings(
+    scalaJSUseMainModuleInitializer := false,
+    Settings.AxiosDependencies,
+    npmDependencies in Compile ++= Settings.AxiosPackages,
+    npmResolutions in Compile ++= (npmDependencies in Compile).value.toMap
+  )
 
 lazy val demo = project
   .in(file("demo"))
-  .dependsOn(core, `react-transition-group`)
+  .dependsOn(core, `react-transition-group`, `scalajs-axios`)
   .configure(commonProfile)
   .settings(
     scalaJSUseMainModuleInitializer := true,

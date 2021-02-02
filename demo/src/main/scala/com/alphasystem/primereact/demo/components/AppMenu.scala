@@ -1,6 +1,7 @@
 package com.alphasystem.primereact.demo.components
 
-import com.alphasystem.primereact.demo.components.`app-menu`._
+import com.alphasystem.axios.Axios
+import com.alphasystem.primereact.demo.components.`app-menu`.MenuItemModel
 import com.alphasystem.rtg.{ CSSTransition, Timeout }
 import japgolly.scalajs.react.feature.ReactFragment
 import japgolly.scalajs.react.vdom.all._
@@ -13,11 +14,19 @@ import japgolly.scalajs.react.{
 }
 import scalacss.ScalaCssReactImplicits
 
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.scalajs.js
+
 object AppMenu extends ScalaCssReactImplicits {
 
   type Props = Unit
 
-  case class State(activeSubmenus: Map[String, Boolean] = Map.empty) {
+  case class State(
+    menu: js.Array[MenuItemModel] = js.Array(),
+    activeSubmenus: Map[String, Boolean] = Map.empty) {
+
+    def updateMenu(menu: js.Array[MenuItemModel]): State =
+      copy(menu = menu)
 
     def toggleActiveSubMenu(name: String): State = {
       val currentValue = this.activeSubmenus.getOrElse(name, false)
@@ -39,21 +48,20 @@ object AppMenu extends ScalaCssReactImplicits {
       item: MenuItemModel
     ): VdomElement = {
       val badgeContent =
-        item.badge match {
-          case Some(value) =>
-            var classNames =
-              List(
-                "layout-menu-badge",
-                "p-tag",
-                "p-tag-rounded",
-                "p-ml-2",
-                "p-text-uppercase",
-                value,
-                if (value == "new") "p-tag-success" else "p-tag-info"
-              ).mkString(" ")
-            span(cls := classNames)(value)
-          case None => span()
-        }
+        if (item.badge.isDefined) {
+          val value = item.badge.get
+          var classNames =
+            List(
+              "layout-menu-badge",
+              "p-tag",
+              "p-tag-rounded",
+              "p-ml-2",
+              "p-text-uppercase",
+              value,
+              if (value == "new") "p-tag-success" else "p-tag-info"
+            ).mkString(" ")
+          span(cls := classNames)(value)
+        } else span()
 
       val content = ReactFragment(item.name, badgeContent)
 
@@ -78,11 +86,16 @@ object AppMenu extends ScalaCssReactImplicits {
       submenuKey: String
     ): VdomElement = {
       val listItems =
-        item.children.getOrElse(Nil).zipWithIndex.map { case (model, index) =>
-          li(role := "menuitem", key := s"menuitem_${submenuKey}_$index")(
-            renderLink(model)
-          )
-        }
+        item
+          .children
+          .getOrElse(js.Array())
+          .zipWithIndex
+          .map { case (model, index) =>
+            li(role := "menuitem", key := s"menuitem_${submenuKey}_$index")(
+              renderLink(model)
+            )
+          }
+          .toList
 
       CSSTransition(
         classNames = "p-toggleable-content",
@@ -102,25 +115,36 @@ object AppMenu extends ScalaCssReactImplicits {
       item: MenuItemModel,
       menuitemIndex: Long
     ) = {
-      item.children.getOrElse(Nil).zipWithIndex.map { case (model, index) =>
-        val submenuKey = s"${menuitemIndex}_$index"
-        val link = renderLink(model)
-        val submenus =
-          if (model.children.nonEmpty)
-            renderCategorySubmenuItems(model, submenuKey)
-          else span("")
-        ReactFragment.withKey(s"menuitem_$submenuKey")(link, submenus)
-      }
+      item
+        .children
+        .getOrElse(js.Array())
+        .zipWithIndex
+        .map { case (model, index) =>
+          val submenuKey = s"${menuitemIndex}_$index"
+          val link = renderLink(model)
+          val submenus =
+            if (model.children.nonEmpty)
+              renderCategorySubmenuItems(model, submenuKey)
+            else span("")
+          ReactFragment.withKey(s"menuitem_$submenuKey")(link, submenus)
+        }
+        .toList
     }
 
     private def renderCategoryItems = {
-      `app-menu`.data.zipWithIndex.map { case (model, index) =>
-        val categoryItem = renderCategoryItem(model, index)
-        ReactFragment.withKey(s"category_$index")(
-          div(cls := "menu-category")(model.name),
-          div(cls := "menu-items")(categoryItem: _*)
-        )
-      }
+      b.state
+        .map(_.menu)
+        .map {
+          _.zipWithIndex.map { case (model, index) =>
+            val categoryItem = renderCategoryItem(model, index)
+            ReactFragment.withKey(s"category_$index")(
+              div(cls := "menu-category")(model.name),
+              div(cls := "menu-items")(categoryItem: _*)
+            )
+          }
+        }
+        .runNow()
+        .toList
     }
 
     private def toggleSubmenu(
@@ -142,12 +166,24 @@ object AppMenu extends ScalaCssReactImplicits {
         )
       )
     }
+
+    def init(): Callback = Callback {
+      Axios
+        .get("./assets/data/menu.json")
+        .toFuture
+        .map { response =>
+          val data = response.data.asInstanceOf[js.Array[MenuItemModel]]
+          b.modState(_.updateMenu(data)).runNow()
+        }
+    }
   }
 
   private val component = ScalaComponent
     .builder[Props]("AppMenu")
     .initialState(State())
     .renderBackend[Backend]
+    .componentDidMount(_.backend.init())
+    .componentDidUpdate(_.backend.init())
     .build
 
   def apply(): VdomElement = component()

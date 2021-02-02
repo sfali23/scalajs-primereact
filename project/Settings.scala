@@ -46,6 +46,7 @@ object Settings {
     val StyleLoader = "style-loader"
     val UrlLoader = "url-loader"
     val FileLoader = "file-loader"
+    val Axios = "axios"
   }
 
   // NPM dependencies versions
@@ -62,9 +63,16 @@ object Settings {
     val UrlLoader = "4.1.1"
     val FileLoader = "6.2.0"
     val Prismjs = "1.23.0"
+    val Axios = "0.21.1"
   }
 
-  private val CommonDependencies: Seq[Setting[Seq[ModuleID]]] = Seq(
+  private val ScalaJsDependencies: Seq[Setting[Seq[ModuleID]]] = Seq(
+    libraryDependencies ++= Seq(
+      ScalaModule.ScalaJs %%% "scalajs-dom" % ScalaVersion.ScalaJs
+    )
+  )
+
+  private val ReactDependencies: Seq[Setting[Seq[ModuleID]]] = Seq(
     libraryDependencies ++= Seq(
       ScalaModule.ScalaJs      %%% "scalajs-dom"          % ScalaVersion.ScalaJs,
       ScalaModule.ScalaJsReact %%% "core"                 % ScalaVersion.ScalaJsReact,
@@ -72,6 +80,9 @@ object Settings {
       ScalaModule.Kinoplan     %%% "scalajs-react-bridge" % ScalaVersion.ScalajsReactBridge
     )
   )
+
+  private val CommonDependencies: Seq[Setting[Seq[ModuleID]]] =
+    ScalaJsDependencies ++ ReactDependencies
 
   private val JsonDependencies: Seq[Setting[Seq[ModuleID]]] = Seq(
     libraryDependencies ++= Seq(
@@ -100,6 +111,8 @@ object Settings {
   val ReactTransitionGroupDependencies: Seq[Def.Setting[Seq[ModuleID]]] =
     CommonDependencies ++ JsonDependencies ++ EnumDependencies
 
+  val AxiosDependencies: Seq[Def.Setting[Seq[ModuleID]]] = ScalaJsDependencies
+
   val DemoDependencies: Seq[Setting[Seq[ModuleID]]] = Seq(
     libraryDependencies ++= Seq(
     )
@@ -112,6 +125,10 @@ object Settings {
 
   val ReactTransitionGroupPackages = Seq(
     NpmModule.ReactTransitionGroup -> NpmVersion.ReactTransition
+  )
+
+  val AxiosPackages = Seq(
+    NpmModule.Axios -> NpmVersion.Axios
   )
 
   private val SupportPackages = Seq(
@@ -141,7 +158,7 @@ object Settings {
 
   val DemoNpmPackages: Seq[(String, String)] = Seq(
     NpmModule.Prismjs -> NpmVersion.Prismjs
-  ) ++ CoreNpmPackages
+  ) ++ CoreNpmPackages ++ AxiosPackages
 
   val NpmDevPackages: Seq[(String, String)] =
     LoadersPackages ++ ReactTypescriptPackages
