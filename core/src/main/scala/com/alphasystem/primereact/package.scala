@@ -19,4 +19,8 @@ package object primereact {
   type CallbackHandler2[P1, P2] = Handler2[P1, P2, Callback]
 
   trait ExternalCss extends js.Object
+
+  implicit class StringOps(src: String) {
+    def toJsAny: js.Any = src.asInstanceOf[js.Any]
+  }
 }

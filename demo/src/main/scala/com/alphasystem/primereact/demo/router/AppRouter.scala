@@ -40,6 +40,7 @@ object AppRouter {
   case object TriStateCheckboxRoute extends Page
   case object ToggleButtonRoute extends Page
   case object ToastRouter extends Page
+  case object SplitButtonRoute extends Page
 
   val routerConfig: RouterWithPropsConfig[Page, Unit] = RouterConfigDsl[Page]
     .buildConfig { dsl =>
@@ -117,7 +118,10 @@ object AppRouter {
         | staticRoute("/#/togglebutton", ToggleButtonRoute) ~> renderR(_ =>
           ToggleButtonPage()
         )
-        | staticRoute("/#/toast", ToastRouter) ~> renderR(_ => ToastPage()))
+        | staticRoute("/#/toast", ToastRouter) ~> renderR(_ => ToastPage())
+        | staticRoute("/#/splitbutton", SplitButtonRoute) ~> renderR(_ =>
+          SplitButtonPage()
+        ))
         .notFound(redirectToPage(HomeRoute)(SetRouteVia.HistoryReplace))
     }
     .renderWith(layout)
