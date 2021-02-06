@@ -2,9 +2,9 @@ package com.alphasystem.primereact.component.toast
 
 import com.alphasystem.primereact._
 import japgolly.scalajs.react.Ref.ToJsComponent
-import japgolly.scalajs.react.component.Js.{ ComponentMapped, RawMounted }
+import japgolly.scalajs.react.component.Js.{ RawMounted, UnmountedMapped }
 import japgolly.scalajs.react.internal.Effect.Id
-import japgolly.scalajs.react.{ Callback, Children, CtorType, JsComponent, Ref }
+import japgolly.scalajs.react.{ Callback, Children, JsComponent, Ref }
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
@@ -22,15 +22,13 @@ object Toast {
   type ToastRef =
     ToJsComponent[Props, State, RawMounted[Props, State] with JsMethods]
 
-  type ToastType = ComponentMapped[
+  type ToastType = UnmountedMapped[
     Id,
     Props,
     State,
-    CtorType.Props,
     RawMounted[Props, State] with JsMethods,
     Props,
-    State,
-    CtorType.Props
+    State
   ]
 
   @js.native
@@ -83,5 +81,6 @@ object Toast {
   def toRef: ToastRef = Ref
     .toJsComponentWithMountedFacade[Props, State, JsMethods]
 
-  def apply(): ToastType = component
+  def apply(ref: ToastRef)(props: Props): ToastType =
+    component.withRef(ref)(props)
 }

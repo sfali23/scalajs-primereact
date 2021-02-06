@@ -25,13 +25,13 @@ package object demo {
       div(
         "Source code can be found ",
         a(
-          href := s"${SourceCodeLinkPrefix}/pages/$mainCode",
+          href := s"$SourceCodeLinkPrefix/pages/$mainCode",
           target := "_blank",
           rel := "noopener noreferrer"
         )("here"),
         " and ",
         a(
-          href := s"${SourceCodeLinkPrefix}/components/$showcaseCode",
+          href := s"$SourceCodeLinkPrefix/components/$showcaseCode",
           target := "_blank",
           rel := "noopener noreferrer"
         )("here"),
@@ -60,6 +60,13 @@ package object demo {
     JSImport.Namespace
   )
   object AppCss extends ExternalCss
+
+  @js.native
+  @JSImport(
+    "../../../../src/main/resources/assets/app/flags.css",
+    JSImport.Namespace
+  )
+  object FlagsCss extends ExternalCss
 
   @js.native
   @JSImport(

@@ -80,6 +80,15 @@ trait Config extends js.Object {
   var cancelToken: CancelToken = js.native
 }
 
+object Config {
+
+  def apply(headers: js.Dictionary[String]): Config = {
+    val config = (new js.Object).asInstanceOf[Config]
+    config.headers = headers
+    config
+  }
+}
+
 @js.native
 @JSGlobal
 class Response extends js.Object {

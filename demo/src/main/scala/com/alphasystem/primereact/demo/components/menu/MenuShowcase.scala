@@ -17,7 +17,7 @@ object MenuShowcase extends ScalaCssReactImplicits {
 
     def render: VdomElement = {
       div(cls := "content-section implementation")(
-        Toast().withRef(toastRef)(Toast.props(position = Position.TopCenter)),
+        Toast(toastRef)(Toast.props(position = Position.TopCenter)),
         div(cls := "card")(
           h5("Inline"),
           Menu(model = menuItems),

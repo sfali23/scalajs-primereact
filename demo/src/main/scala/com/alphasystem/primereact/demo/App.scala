@@ -2,7 +2,6 @@ package com.alphasystem.primereact.demo
 
 import com.alphasystem.primereact.ExternalCss
 import com.alphasystem.primereact.demo.css.DemoStyles
-import com.alphasystem.primereact.demo.router.AppRouter
 import org.scalajs.dom._
 
 object App {

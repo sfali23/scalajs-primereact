@@ -219,20 +219,20 @@ object ToastShowcase extends ScalaCssReactImplicits {
 
     def render: VdomElement = {
       div(cls := "content-section implementation")(
-        Toast().withRef(toast)(Toast.props()),
-        Toast().withRef(toastTL)(
+        Toast(toast)(Toast.props()),
+        Toast(toastTL)(
           Toast.props(position = Position.TopLeft)
         ),
-        Toast().withRef(toastBL)(
+        Toast(toastBL)(
           Toast.props(position = Position.BottomLeft)
         ),
-        Toast().withRef(toastBR)(
+        Toast(toastBR)(
           Toast.props(position = Position.BottomRight)
         ),
-        Toast().withRef(toastBC)(
+        Toast(toastBC)(
           Toast.props(position = Position.BottomCenter)
         ),
-        Toast().withRef(toastTC)(
+        Toast(toastTC)(
           Toast.props(position = Position.TopCenter)
         ),
         div(cls := "card toast-demo")(
