@@ -1,6 +1,7 @@
 package com.alphasystem.primereact.component.button
 
 import com.alphasystem.primereact.component.badge.BadgeType
+import com.alphasystem.primereact.component.tooltip.TooltipOptions
 import com.alphasystem.primereact.icons.Icon
 import io.kinoplan.scalajs.react.bridge.WithPropsNoChildren
 
@@ -13,6 +14,8 @@ class ButtonBuilder {
   private var classNames: List[String] = Nil
   private var badge: Option[String] = None
   private var badgeType: Option[BadgeType] = None
+  private var tooltip: Option[String] = None
+  private var tooltipOptions: Option[TooltipOptions] = None
 
   def label(label: String): ButtonBuilder = {
     this.label = Some(label)
@@ -84,6 +87,16 @@ class ButtonBuilder {
     this
   }
 
+  def tooltip(tooltip: String): ButtonBuilder = {
+    this.tooltip = Some(tooltip)
+    this
+  }
+
+  def tooltipOptions(tooltipOptions: TooltipOptions): ButtonBuilder = {
+    this.tooltipOptions = Some(tooltipOptions)
+    this
+  }
+
   private def toClassName: Option[String] =
     if (classNames.isEmpty) None else Some(classNames.mkString(" "))
 
@@ -94,7 +107,9 @@ class ButtonBuilder {
       icon = icon.orUndefined,
       iconPos = iconPos.orUndefined,
       badge = badge.orUndefined,
-      badgeClassName = badgeType.map(_.toClassName).orUndefined
+      badgeClassName = badgeType.map(_.toClassName).orUndefined,
+      tooltip = tooltip.orUndefined,
+      tooltipOptions = tooltipOptions.orUndefined
     )
 }
 

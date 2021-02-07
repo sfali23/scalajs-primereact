@@ -1,6 +1,7 @@
 package com.alphasystem.primereact.component.inputtext
 
 import com.alphasystem.primereact.component.keyfilter.KeyFilter
+import com.alphasystem.primereact.component.tooltip.TooltipOptions
 import io.kinoplan.scalajs.react.bridge.{
   ReactBridgeComponent,
   WithPropsNoChildren
@@ -21,7 +22,7 @@ object InputText extends ReactBridgeComponent {
   def apply(
     keyfilter: UndefOr[KeyFilter | RegExp] = undefined,
     validateOnly: UndefOr[Boolean] = undefined,
-    tooltip: UndefOr[js.Any] = undefined,
-    tooltipOptions: UndefOr[js.Object] = undefined
+    tooltip: UndefOr[String | js.Any] = undefined,
+    tooltipOptions: UndefOr[TooltipOptions] = undefined
   ): WithPropsNoChildren = autoNoChildren
 }

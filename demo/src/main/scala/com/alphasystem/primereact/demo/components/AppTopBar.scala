@@ -1,5 +1,6 @@
 package com.alphasystem.primereact.demo.components
 
+import com.alphasystem.primereact.component.tooltip.{ Position, Tooltip }
 import com.alphasystem.primereact.demo.css.DemoStyles
 import com.alphasystem.primereact.icons.Icon
 import com.alphasystem.rtg.{ CSSTransition, Timeout }
@@ -147,6 +148,7 @@ object AppTopBar extends ScalaCssReactImplicits {
       )
 
     def render(props: Props, state: State): VdomElement = {
+      val dataPrTooltip = VdomAttr("data-pr-tooltip")
       val logoType = if (props.darkTheme) "" else "-dark"
       div(cls := "layout-topbar")(
         button(
@@ -173,7 +175,10 @@ object AppTopBar extends ScalaCssReactImplicits {
             )
           )
         ), // end of "logos"
-        div(cls := "app-theme")(
+        Tooltip(
+          Tooltip.props(target = ".app-theme", position = Position.Bottom)
+        ),
+        div(cls := "app-theme", dataPrTooltip := props.theme)(
           img(
             alt := props.theme,
             src := s"./assets/images/themes/${themeLogoMap(props.theme)}"

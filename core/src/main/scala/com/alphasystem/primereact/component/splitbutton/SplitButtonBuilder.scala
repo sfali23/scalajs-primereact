@@ -2,6 +2,7 @@ package com.alphasystem.primereact.component.splitbutton
 
 import com.alphasystem.primereact.component.button.Severity
 import com.alphasystem.primereact.component.menumodel.MenuItem
+import com.alphasystem.primereact.component.tooltip.TooltipOptions
 import com.alphasystem.primereact.icons.Icon
 import io.kinoplan.scalajs.react.bridge.WithPropsNoChildren
 
@@ -17,6 +18,8 @@ class SplitButtonBuilder {
   private var buttonTemplate: Option[js.Any] = None
   private var model: List[MenuItem] = Nil
   private var classNames: List[String] = Nil
+  private var tooltip: Option[String] = None
+  private var tooltipOptions: Option[TooltipOptions] = None
 
   def label(label: String): SplitButtonBuilder = {
     this.label = Some(label)
@@ -55,6 +58,16 @@ class SplitButtonBuilder {
 
   def tabIndex(tabIndex: String): SplitButtonBuilder = {
     this.tabIndex = Some(tabIndex)
+    this
+  }
+
+  def tooltip(tooltip: String): SplitButtonBuilder = {
+    this.tooltip = Some(tooltip)
+    this
+  }
+
+  def tooltipOptions(tooltipOptions: TooltipOptions): SplitButtonBuilder = {
+    this.tooltipOptions = Some(tooltipOptions)
     this
   }
 
