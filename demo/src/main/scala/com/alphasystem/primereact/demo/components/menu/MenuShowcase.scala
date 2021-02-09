@@ -2,7 +2,8 @@ package com.alphasystem.primereact.demo.components.menu
 
 import com.alphasystem.primereact.component.button.ButtonBuilder
 import com.alphasystem.primereact.component.menu.Menu
-import com.alphasystem.primereact.component.toast.{ Position, Toast }
+import com.alphasystem.primereact.component.message.Position
+import com.alphasystem.primereact.component.toast.Toast
 import com.alphasystem.primereact.icons.Icon
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.all._

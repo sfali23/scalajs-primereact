@@ -1,4 +1,4 @@
-package com.alphasystem.primereact.component.toast
+package com.alphasystem.primereact.component.message
 
 import enumeratum.EnumEntry.Hyphencase
 import enumeratum.{ Enum, EnumEntry }

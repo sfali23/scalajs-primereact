@@ -18,7 +18,7 @@ object ToastDemoDocs extends ScalaCssReactImplicits with SourceCodeLink {
           TabPanel(header = "Documentation")(
             importExample(
               "com.alphasystem.primereact.component.toast.Toast",
-              "com.alphasystem.primereact.component.toast.ToastMessage"
+              "com.alphasystem.primereact.component.message.MessageItem"
             ),
             gettingStartedExample,
             customizationExample,
@@ -45,7 +45,7 @@ object ToastDemoDocs extends ScalaCssReactImplicits with SourceCodeLink {
                             |Toast().withRef(toast)(Toast.props())
                             |""".stripMargin),
         CodeHighlighter()(
-          """ val message = ToastMessage(
+          """ val message = MessageItem(
             |                   severity = Some(Severity.Info),
             |                   summary = Some("Info Message"),
             |                   detail = Some("Message Content")
@@ -65,7 +65,7 @@ object ToastDemoDocs extends ScalaCssReactImplicits with SourceCodeLink {
             |val summary = div(fontWeight.bolder)("Sticky Message")
             |val detail = div(fontStyle.italic, fontSize := "20px")("Message Content")
             |
-            |val message = ToastMessage(
+            |val message = MessageItem(
             |                   severity = Some(Severity.Info),
             |                   summary = Some(summary),
             |                   detail = Some(detail),

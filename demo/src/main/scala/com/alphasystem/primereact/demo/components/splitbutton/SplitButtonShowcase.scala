@@ -2,9 +2,10 @@ package com.alphasystem.primereact.demo.components.splitbutton
 
 import com.alphasystem.primereact._
 import com.alphasystem.primereact.component.button.Severity
+import com.alphasystem.primereact.component.message
+import com.alphasystem.primereact.component.message.MessageItem
 import com.alphasystem.primereact.component.splitbutton.SplitButtonBuilder
-import com.alphasystem.primereact.component.toast
-import com.alphasystem.primereact.component.toast.{ Toast, ToastMessage }
+import com.alphasystem.primereact.component.toast.Toast
 import com.alphasystem.primereact.demo.components.menu._
 import com.alphasystem.primereact.icons.Icon
 import japgolly.scalajs.react._
@@ -26,8 +27,8 @@ object SplitButtonShowcase extends ScalaCssReactImplicits {
 
     private def save = toastRef.foreach(
       _.raw.show(
-        ToastMessage(
-          severity = toast.Severity.Success,
+        MessageItem(
+          severity = message.Severity.Success,
           summary = "Success".toJsAny,
           detail = "Data Saved".toJsAny
         )

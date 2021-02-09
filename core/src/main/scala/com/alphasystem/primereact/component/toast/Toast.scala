@@ -1,6 +1,6 @@
 package com.alphasystem.primereact.component.toast
 
-import com.alphasystem.primereact._
+import com.alphasystem.primereact.component.message._
 import japgolly.scalajs.react.Ref.ToJsComponent
 import japgolly.scalajs.react.component.Js.{ RawMounted, UnmountedMapped }
 import japgolly.scalajs.react.internal.Effect.Id
@@ -15,9 +15,6 @@ object Toast {
   @JSImport("primereact/toast", "Toast")
   @js.native
   object RawComponent extends js.Function
-
-  type MessageCallback = js.Function1[ToastMessage, Unit]
-  type MessageHandler = CallbackHandler1[ToastMessage]
 
   type ToastRef =
     ToJsComponent[Props, State, RawMounted[Props, State] with JsMethods]
@@ -44,13 +41,13 @@ object Toast {
 
   @js.native
   trait State extends js.Object {
-    var messages: js.Array[ToastMessage]
+    var messages: js.Array[MessageItem]
   }
 
   @js.native
   trait JsMethods extends js.Object {
-    def show(message: js.Array[ToastMessage]): Unit = js.native
-    def show(message: ToastMessage): Unit = js.native
+    def show(message: js.Array[MessageItem]): Unit = js.native
+    def show(message: MessageItem): Unit = js.native
     def clear(): Unit = js.native
   }
 
@@ -69,8 +66,8 @@ object Toast {
     props.className = className
     props.style = style
     props.baseZIndex = baseZIndex
-    props.onRemove = (message: ToastMessage) => onRemove(message).runNow()
-    props.onClick = (message: ToastMessage) => onClick(message).runNow()
+    props.onRemove = (message: MessageItem) => onRemove(message).runNow()
+    props.onClick = (message: MessageItem) => onClick(message).runNow()
     props
   }
 

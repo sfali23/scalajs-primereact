@@ -4,8 +4,8 @@ import com.alphasystem.primereact.component.menumodel.{
   MenuItem,
   MenuItemModelBuilder
 }
+import com.alphasystem.primereact.component.message.{ MessageItem, Severity }
 import com.alphasystem.primereact.component.toast.Toast.ToastRef
-import com.alphasystem.primereact.component.toast.{ Severity, ToastMessage }
 import com.alphasystem.primereact.icons.Icon
 import typings.std.global.window
 
@@ -18,7 +18,7 @@ package object menu {
     summary: js.Any,
     detail: js.Any = "Message Content"
   ) =
-    ToastMessage(
+    MessageItem(
       severity = severity,
       summary = summary,
       detail = detail

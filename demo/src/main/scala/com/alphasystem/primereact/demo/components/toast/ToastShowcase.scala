@@ -5,12 +5,12 @@ import com.alphasystem.primereact.component.button.{
   ButtonBuilder,
   Severity => ButtonSeverity
 }
-import com.alphasystem.primereact.component.toast.{
+import com.alphasystem.primereact.component.message.{
+  MessageItem,
   Position,
-  Severity,
-  Toast,
-  ToastMessage
+  Severity
 }
+import com.alphasystem.primereact.component.toast.Toast
 import com.alphasystem.primereact.css.CommonStyles
 import com.alphasystem.primereact.icons.Icon
 import japgolly.scalajs.react._
@@ -47,7 +47,7 @@ object ToastShowcase extends ScalaCssReactImplicits {
       detail: js.Any = "Message Content",
       sticky: Boolean = false
     ) =
-      ToastMessage(
+      MessageItem(
         severity = severity,
         summary = summary,
         detail = detail,
@@ -201,7 +201,7 @@ object ToastShowcase extends ScalaCssReactImplicits {
 
       toastBC.foreach(
         _.raw.show(
-          ToastMessage(
+          MessageItem(
             severity = Severity.Warn,
             content = content.rawElement
           )
