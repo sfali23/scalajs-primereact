@@ -43,6 +43,7 @@ object AppRouter {
   case object SplitButtonRoute extends Page
   case object TooltipRoute extends Page
   case object MessagesRoute extends Page
+  case object DialogRoute extends Page
 
   val routerConfig: RouterWithPropsConfig[Page, Unit] = RouterConfigDsl[Page]
     .buildConfig { dsl =>
@@ -127,7 +128,8 @@ object AppRouter {
         | staticRoute("/#/tooltip", TooltipRoute) ~> renderR(_ => TooltipPage())
         | staticRoute("/#/messages", MessagesRoute) ~> renderR(_ =>
           MessagesPage()
-        ))
+        )
+        | staticRoute("/#/dialog", DialogRoute) ~> renderR(_ => DialogPage()))
         .notFound(redirectToPage(HomeRoute)(SetRouteVia.HistoryReplace))
     }
     .renderWith(layout)

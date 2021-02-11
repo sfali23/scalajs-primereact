@@ -2,13 +2,13 @@ package com.alphasystem.primereact.demo.components.messages
 
 import com.alphasystem.primereact.component.tabview.{ TabPanel, TabView }
 import com.alphasystem.primereact.demo.components.CodeHighlighter
-import com.alphasystem.primereact.demo.importExample
+import com.alphasystem.primereact.demo.{ SourceCodeLink, importExample }
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.feature.ReactFragment
 import japgolly.scalajs.react.vdom.all._
 import scalacss.ScalaCssReactImplicits
 
-object MessagesDemoDocs extends ScalaCssReactImplicits {
+object MessagesDemoDocs extends ScalaCssReactImplicits with SourceCodeLink {
 
   case class Backend(b: BackendScope[Unit, Unit]) {
 
@@ -28,7 +28,11 @@ object MessagesDemoDocs extends ScalaCssReactImplicits {
             replaceMessageExample,
             closableMessageExample,
             stickyMessageExample,
-            messageComponentExample
+            messageComponentExample,
+            sourceCodeLink(
+              "MessagesPage.scala",
+              "messages/MessagesShowcase.scala"
+            )
           )
         )
       )
